@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 interface ButtonProps {
-  text: string;
+  children: React.ReactNode;
   size: "small" | "medium" | "large" | "Confirmed";
   color: "small" | "medium" | "large" | "yellow" | "Confirmed";
 }
@@ -24,7 +24,7 @@ const buttonForm = cva("", {
   },
 });
 
-export const Button = ({ text, size, color }: ButtonProps) => {
+export const Button = ({ children, size, color }: ButtonProps) => {
   const className = buttonForm({ size, color });
-  return <button className={className}>{text}</button>;
+  return <button className={className}>{children}</button>;
 };
