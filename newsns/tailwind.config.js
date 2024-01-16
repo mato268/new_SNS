@@ -23,6 +23,7 @@ module.exports = {
       auto: 'w-auto',
       full: 'w-full',
       harf: 'w-1/2',
+      widthZero: 'w-0',
     },
     height: {
       buttonLarge: '63px',

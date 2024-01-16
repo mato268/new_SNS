@@ -4,7 +4,7 @@ interface ButtonProps {
   children: React.ReactNode;
   size: "small" | "medium" | "large" | "Confirmed";
   color: "white" | "deepdark" | "yellow";
-  hover: "yes" | "no"
+  hover: "yes" | "no";
   onClick(): void;
 }
 
@@ -22,13 +22,23 @@ const buttonForm = cva("", {
       yellow: "bg-yellow text-deepdark",
     },
     hover: {
-        yes: "hover:bg-gray",
-        no: "",
-      },
+      yes: "hover:bg-gray",
+      no: "",
+    },
   },
 });
 
-export const Button = ({ children, size, color, hover, onClick }: ButtonProps) => {
+export const Button = ({
+  children,
+  size,
+  color,
+  hover,
+  onClick,
+}: ButtonProps) => {
   const className = buttonForm({ size, color, hover });
-  return <button className={className} onClick={onClick}>{children}</button>;
+  return (
+    <button className={className} onClick={onClick}>
+      {children}
+    </button>
+  );
 };
