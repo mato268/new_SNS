@@ -13,7 +13,7 @@ const buttonForm = cva("", {
       large: "text-lg w-buttonLarge h-buttonLarge rounded-2xl",
       medium: "text-md w-buttonMedium h-buttonMedium rounded-2xl",
       small: "text-sm w-buttonSmall h-buttonSmall rounded-2xl",
-      Confirmed: "text w-Confirmed h-Confirmed rounded-2xl",
+      Confirmed: "text w-buttonConfirmed h-buttonConfirmed rounded-2xl",
     },
     color: {
       white: "bg-white text-deepdark",
