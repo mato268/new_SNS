@@ -8,19 +8,22 @@ function App() {
         <Input
           type="text"
           size="large"
-          color="large"
+          color="white"
+          rounded="yes"
           placeholder="닉네임을 입력해주세요"
         ></Input>
         <Input
           type="text"
           size="medium"
-          color="medium"
+          color="white"
+          rounded="yes"
           placeholder="댓글을 입력해주세요"
         ></Input>
         <Input
           type="text"
-          size="outline"
-          color="outline"
+          size="small"
+          color="transparent"
+          rounded="no"
           placeholder="제목을 입력해주세요"
         ></Input>
       </div>
