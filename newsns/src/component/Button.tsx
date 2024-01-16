@@ -5,6 +5,7 @@ interface ButtonProps {
   size: "small" | "medium" | "large" | "Confirmed";
   color: "white" | "deepdark" | "yellow";
   hover: "yes" | "no"
+  onClick(): void;
 }
 
 const buttonForm = cva("", {
@@ -27,7 +28,7 @@ const buttonForm = cva("", {
   },
 });
 
-export const Button = ({ children, size, color, hover }: ButtonProps) => {
+export const Button = ({ children, size, color, hover, onClick }: ButtonProps) => {
   const className = buttonForm({ size, color, hover });
-  return <button className={className}>{children}</button>;
+  return <button className={className} onClick={onClick}>{children}</button>;
 };
