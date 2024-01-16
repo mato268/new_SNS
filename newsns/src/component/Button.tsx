@@ -3,7 +3,8 @@ import { cva } from "class-variance-authority";
 interface ButtonProps {
   children: React.ReactNode;
   size: "small" | "medium" | "large" | "Confirmed";
-  color: "small" | "medium" | "large" | "yellow" | "Confirmed";
+  color: "white" | "deepdark" | "yellow";
+  hover: "yes" | "no"
 }
 
 const buttonForm = cva("", {
@@ -15,16 +16,18 @@ const buttonForm = cva("", {
       Confirmed: "text w-Confirmed h-Confirmed rounded-2xl",
     },
     color: {
-      large: "bg-white text-deepdark hover:bg-gray",
-      medium: "bg-deepdark text-white hover:bg-gray",
-      small: "bg-deepdark text-white hover:bg-gray",
+      white: "bg-white text-deepdark",
+      deepdark: "bg-deepdark text-white",
       yellow: "bg-yellow text-deepdark",
-      Confirmed: "bg-yellow text-deepdark",
     },
+    hover: {
+        yes: "hover:bg-gray",
+        no: "",
+      },
   },
 });
 
-export const Button = ({ children, size, color }: ButtonProps) => {
-  const className = buttonForm({ size, color });
+export const Button = ({ children, size, color, hover }: ButtonProps) => {
+  const className = buttonForm({ size, color, hover });
   return <button className={className}>{children}</button>;
 };
