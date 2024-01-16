@@ -6,6 +6,8 @@ interface InputProps {
   color: "white" | "transparent";
   placeholder: string;
   rounded: "yes" | "no";
+  iconName: string;
+  location: "short" | "long" | "no";
 }
 
 const inputForm = cva("", {
@@ -26,13 +28,32 @@ const inputForm = cva("", {
   },
 });
 
+const iconForm = cva("", {
+  variants: {
+    // 아이콘 넣어보고 위치 조정
+    location: {
+      short: "indent-4",
+      long: "indent-7",
+      no: "",
+    },
+  },
+});
+
 export const Input = ({
   size,
   color,
   type,
   placeholder,
   rounded,
+  iconName,
+  location,
 }: InputProps) => {
-  const className = inputForm({ size, color, rounded });
-  return <input type={type} className={className} placeholder={placeholder} />;
+  const inputClass = inputForm({ size, color, rounded });
+  const iconClass = iconForm({ location });
+  return (
+    <>
+      <input type={type} className={inputClass} placeholder={placeholder} />
+      <i className={iconName + ` ${iconClass}`}></i>
+    </>
+  );
 };
