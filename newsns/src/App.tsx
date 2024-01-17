@@ -7,16 +7,15 @@ function App() {
     <main>
       {/*버튼 구분하기 위함*/}
       <div style={{ backgroundColor: "blue", width: "390px", height: "200px" }}>
-        <div className="w-buttonLarge h-buttonLarge">
           <Button
             size="large"
             color="white"
             hover="yes"
             onClick={() => onClick}
+            asdf="asdf"
           >
             로그인
           </Button>
-        </div>
         <Button
           size="medium"
           color="deepdark"
