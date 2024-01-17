@@ -13,10 +13,6 @@ module.exports = {
       'green': '#00cd2d',
     },
     width: {
-      buttonLarge: '332px',
-      buttonMedium: '139px',
-      buttonSmall: '98px',
-      buttonConfirmed: '140px',
       inputLarge: '332px',
       inputMedium: '332px',
       inputSamll: '226px',
@@ -26,10 +22,6 @@ module.exports = {
       widthZero: 'w-0',
     },
     height: {
-      buttonLarge: '63px',
-      buttonMedium: '63px',
-      buttonSmall: '44.42px',
-      buttonConfirmed: '44px',
       inputLarge: '63px',
       inputmedium: '48px',
       input: '48px',

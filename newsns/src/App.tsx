@@ -10,7 +10,7 @@ function App() {
           size="large"
           color="white"
           rounded="yes"
-          iconName="iconName1"
+          rightNode="iconName1"
           location="short"
           placeholder="닉네임을 입력해주세요"
         ></Input>
@@ -19,7 +19,7 @@ function App() {
           size="medium"
           color="white"
           rounded="yes"
-          iconName="iconName2"
+          rightNode="iconName2"
           location="long"
           placeholder="댓글을 입력해주세요"
         ></Input>
@@ -28,7 +28,7 @@ function App() {
           size="small"
           color="transparent"
           rounded="no"
-          iconName="no"
+          rightNode="no"
           location="no"
           placeholder="제목을 입력해주세요"
         ></Input>
