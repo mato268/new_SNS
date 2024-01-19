@@ -10,7 +10,6 @@ function App() {
           <Button
             size="large"
             color="white"
-            hover="yes"
             onClick={() => onClick}
             asdf="asdf"
           >
@@ -19,7 +18,6 @@ function App() {
         <Button
           size="medium"
           color="deepdark"
-          hover="no"
           onClick={() => onClick}
         >
           로그인
@@ -27,18 +25,16 @@ function App() {
         <Button
           size="small"
           color="deepdark"
-          hover="yes"
           onClick={() => onClick}
         >
           새 계정
         </Button>
-        <Button size="small" color="yellow" hover="yes" onClick={() => onClick}>
+        <Button size="small" color="yellow" onClick={() => onClick}>
           다음
         </Button>
         <Button
           size="Confirmed"
           color="yellow"
-          hover="no"
           onClick={() => onClick}
         >
           인증코드발송

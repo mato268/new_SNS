@@ -1,11 +1,11 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import React from "react";
 import cn from "classnames";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
 interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonForm> {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const buttonForm = cva("", {
@@ -21,10 +21,6 @@ const buttonForm = cva("", {
       deepdark: "bg-deepdark text-white",
       yellow: "bg-yellow text-deepdark",
     },
-    hover: {
-      yes: "hover:bg-gray",
-      no: "",
-    },
   },
 });
 
@@ -32,14 +28,11 @@ export const Button = ({
   children,
   size,
   color,
-  hover,
-  onClick,
   ...rest
 }: ButtonProps) => {
   return (
     <button
-      className={cn(buttonForm({ size, color, hover }))}
-      onClick={onClick}
+      className={cn(buttonForm({ size, color }))}
       {...rest}
     >
       {children}
