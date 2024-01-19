@@ -7,30 +7,27 @@ function App() {
       <div style={{ backgroundColor: "blue", width: "390px", height: "200px" }}>
         <Input
           type="text"
-          size="large"
+          sizes="large"
           color="white"
-          rounded="yes"
           rightNode="iconName1"
-          location="short"
           placeholder="닉네임을 입력해주세요"
+          variant="default"
         ></Input>
         <Input
           type="text"
-          size="medium"
+          sizes="medium"
           color="white"
-          rounded="yes"
           rightNode="iconName2"
-          location="long"
           placeholder="댓글을 입력해주세요"
+          variant="default"
         ></Input>
         <Input
           type="text"
-          size="small"
+          sizes="small"
           color="transparent"
-          rounded="no"
           rightNode="no"
-          location="no"
           placeholder="제목을 입력해주세요"
+          variant="default"
         ></Input>
       </div>
     </main>

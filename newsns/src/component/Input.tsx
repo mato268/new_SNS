@@ -1,18 +1,16 @@
 import { cva } from "class-variance-authority";
+import { InputHTMLAttributes, ReactNode } from "react";
 
-interface InputProps {
-  type: string;
-  size: "small" | "medium" | "large";
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  sizes: "small" | "medium" | "large";
   color: "white" | "transparent";
-  placeholder: string;
-  rounded: "yes" | "no";
-  rightNode: string;
-  location: "short" | "long" | "no";
+  variant: "default" | "outline";
+  rightNode: ReactNode;
 }
 
 const inputForm = cva("", {
   variants: {
-    size: {
+    sizes: {
       large: "text-lg w-inputLarge h-inputLarge",
       medium: "text-md w-inputMedium h-inputmedium",
       small: "text-md w-inputSamll h-inputmedium",
@@ -25,22 +23,25 @@ const inputForm = cva("", {
       yes: "rounded-2xl",
       no: "",
     },
+    variant: {
+      default: "",
+      outline: "",
+    },
   },
 });
 
 export const Input = ({
-  size,
+  sizes,
   color,
-  type,
-  placeholder,
-  rounded,
   rightNode,
+  variant,
+  ...rest
 }: InputProps) => {
-  const inputClass = inputForm({ size, color, rounded });
+  const inputClass = inputForm({ sizes, color, variant });
   return (
     <>
-      <input type={type} className={inputClass} placeholder={placeholder} />
-      <i className={rightNode}></i>
+      <input className={inputClass} {...rest} />
+      {rightNode}
     </>
   );
 };
