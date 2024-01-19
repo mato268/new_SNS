@@ -16,7 +16,7 @@ const buttonForm = cva("", {
       small: "text-sm w-buttonSmall h-buttonSmall rounded-2xl",
       Confirmed: "text w-buttonConfirmed h-buttonConfirmed rounded-2xl",
     },
-    color: {
+    colors: {
       white: "bg-white text-deepdark",
       deepdark: "bg-deepdark text-white",
       yellow: "bg-yellow text-deepdark",
@@ -27,12 +27,12 @@ const buttonForm = cva("", {
 export const Button = ({
   children,
   size,
-  color,
+  colors,
   ...rest
 }: ButtonProps) => {
   return (
     <button
-      className={cn(buttonForm({ size, color }))}
+      className={cn(buttonForm({ size, colors }))}
       {...rest}
     >
       {children}
