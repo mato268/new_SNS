@@ -16,6 +16,10 @@ module.exports = {
       inputLarge: '332px',
       inputMedium: '332px',
       inputSamll: '226px',
+      buttonLarge: '332px',
+      buttonMedium: '139px',
+      buttonSmall: '98px',
+      buttonConfirmed: '140px',
       auto: 'w-auto',
       full: 'w-full',
       harf: 'w-1/2',
@@ -25,8 +29,14 @@ module.exports = {
       inputLarge: '63px',
       inputmedium: '48px',
       input: '48px',
+      buttonLarge: '63px',
+      buttonMedium: '63px',
+      buttonSmall: '44.42px',
+      buttonConfirmed: '44px',
     },
     extend: {},
   },
   plugins: [],
 }
+}
+
