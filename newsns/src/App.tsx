@@ -2,6 +2,9 @@ import { Input } from "./component/Input";
 import { Button } from "./component/Button";
 
 function App() {
+
+  function onClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {}
+
   return (
     <main>
       {/*버튼 구분하기 위함*/}
@@ -22,6 +25,7 @@ function App() {
           인증코드발송
         </Button>
       </div>
+      
       {/*인풋 구분하기 위함*/}
       <div style={{ backgroundColor: "blue", width: "390px", height: "200px" }}>
         <Input
@@ -30,7 +34,7 @@ function App() {
           color="white"
           rightNode="iconName1"
           placeholder="닉네임을 입력해주세요"
-          variant="default"
+          variant="outline"
         ></Input>
         <Input
           type="text"
@@ -38,7 +42,7 @@ function App() {
           color="white"
           rightNode="iconName2"
           placeholder="댓글을 입력해주세요"
-          variant="default"
+          variant="outline"
         ></Input>
         <Input
           type="text"
