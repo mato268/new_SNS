@@ -13,6 +13,9 @@ module.exports = {
       'green': '#00cd2d',
     },
     width: {
+      inputLarge: '332px',
+      inputMedium: '332px',
+      inputSamll: '226px',
       buttonLarge: '332px',
       buttonMedium: '139px',
       buttonSmall: '98px',
@@ -23,6 +26,9 @@ module.exports = {
       widthZero: 'w-0',
     },
     height: {
+      inputLarge: '63px',
+      inputmedium: '48px',
+      input: '48px',
       buttonLarge: '63px',
       buttonMedium: '63px',
       buttonSmall: '44.42px',
@@ -31,5 +37,6 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+}
 }
 
