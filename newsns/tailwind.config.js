@@ -27,6 +27,7 @@ module.exports = {
       buttonMedium: '63px',
       buttonSmall: '44.42px',
       buttonConfirmed: '44px',
+      asdf: "1200px"
     },
     extend: {},
   },
