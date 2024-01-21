@@ -19,13 +19,9 @@ const inputForm = cva("", {
       white: "bg-white outline-0 indent-5",
       transparent: "bg-transparent outline-0 border-b-2 indent-7",
     },
-    rounded: {
-      yes: "rounded-2xl",
-      no: "",
-    },
     variant: {
       default: "",
-      outline: "",
+      outline: "rounded-2xl",
     },
   },
 });
