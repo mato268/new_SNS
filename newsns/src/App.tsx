@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Modal from "./component/Modal";
-import ModalPortal from "./component/ModalPortal";
+import Modal from "./components/Modal";
+import ModalPortal from "./components/ModalPortal";
 
 function App() {
   const [open, setOpen] = useState<boolean>(false);
@@ -14,7 +14,7 @@ function App() {
   }
   return (
     <main>
-      <button onClick={onOpenModal}>모달열기</button>
+      <button className="w-buttonSmall h-buttonSmall rounded-2xl bg-deepdark text-white" onClick={onOpenModal}>모달열기</button>
       {open && (<ModalPortal>
         <Modal onClose={onCloseModal}>모달입니다</Modal>
       </ModalPortal>
