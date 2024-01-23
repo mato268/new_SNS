@@ -18,7 +18,6 @@ export default function Modal({
   return ReactDOM.createPortal(
     <div
       className={`fixed inset-0 flex justify-center ${open ? "bg-deepdark/85" : "hidden"}`}
-      onClick={onClose}
       {...rest}
     >
       <div
