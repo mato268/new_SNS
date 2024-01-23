@@ -17,12 +17,12 @@ export default function Modal({
 
   return ReactDOM.createPortal(
     <div
-      className={`fixed inset-0 ${open ? "bg-deepdark/85" : "hidden"}`}
+      className={`fixed inset-0 flex justify-center ${open ? "bg-deepdark/85" : "hidden"}`}
       onClick={onClose}
       {...rest}
     >
       <div
-        className={`bg-white rounded-2xl p-10 max-w-maxWidth min-w-minWidth max-h-maxHeight min-h-minHeight 
+        className={`absolute top-1/2 -mt-32 bg-white rounded-2xl p-10 max-w-modalMaxWidth min-w-modalMinWidth max-h-modalMaxHeight min-h-modalMinHeight 
         ${open ? "" : "hidden"}`}
         onClick={e => e.stopPropagation()}
       >

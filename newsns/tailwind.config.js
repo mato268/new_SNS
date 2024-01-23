@@ -27,19 +27,22 @@ module.exports = {
       buttonMedium: "63px",
       buttonSmall: "44.42px",
       buttonConfirmed: "44px",
+      full: "h-full",
       asdf: "1200px", //스크롤 방지 확인용
     },
     maxWidth: {
-      maxWidth: "332px",
+      maxWidth: "390",
+      modalMaxWidth: "332px",
     },
     maxHeight: {
-      maxHeight: "293px",
+      maxHeight: "844",
+      modalMaxHeight: "293px",
     },
     minWidth: {
-      minWidth: "305px",
+      modalMinWidth: "305px",
     },
     minHeight: {
-      minHeight: "251px",
+      modalMinHeight: "251px",
     },
     extend: {},
   },
