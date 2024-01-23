@@ -1,6 +1,6 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
-interface ModalProps extends ButtonHTMLAttributes<HTMLDivElement> {
+interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   onClose: () => void;
   children: ReactNode;
   open: boolean;
@@ -21,8 +21,8 @@ export default function Modal({ open, onClose, children, ...rest }: ModalProps) 
         ${open ? "scale-100 opacity-100" : "hidden"}`}
         onClick={e => e.stopPropagation()}
       >
-        <button className="absolute top-2 right-2" onClick={onClose}>
-          닫기
+        <button className="absolute bottom-2 right-2" onClick={onClose}>
+          확인
         </button>
         {children}
       </div>
