@@ -1,24 +1,24 @@
-import React from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
-interface ModalProps {
+interface ModalProps extends ButtonHTMLAttributes<HTMLDivElement> {
   onClose: () => void;
-  children: React.ReactNode;
+  children: ReactNode;
   open: boolean;
 }
 
-export default function Modal({ open, onClose, children }: ModalProps) {
+export default function Modal({ open, onClose, children, ...rest }: ModalProps) {
 
   return (
     <div
       className={`fixed inset-0 flex justify-center items-center ${
-        open ? "bg-deepdark/50" : "invisible"
+        open ? "bg-deepdark/85" : "hidden"
       }
     `}
-      onClick={onClose}
+    {...rest}
     >
       <div
         className={`bg-white rounded-2xl p-10 max-w-md 
-        ${open ? "scale-100 opacity-100" : "scale-110 opacitiy-0"}`}
+        ${open ? "scale-100 opacity-100" : "hidden"}`}
         onClick={e => e.stopPropagation()}
       >
         <button className="absolute top-2 right-2" onClick={onClose}>
