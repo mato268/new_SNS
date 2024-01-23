@@ -1,23 +1,42 @@
-import { useState} from "react";
+import { useState } from "react";
 import Modal from "./components/Modal";
-import ModalPortal from "./components/ModalPortal";
+import { Button } from "./components/Button";
 
 function App() {
   const [open, setOpen] = useState<boolean>(false);
 
-  console.log(open)
+  const onLockScroll = () => {
+    setOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const onScroll = () => {
+    setOpen(false);
+    document.body.style.overflow = "unset";
+  };
+
+  const outsideClose = () => {
+    setOpen(false);
+    document.body.style.overflow = "unset";
+  };
 
   return (
     <main>
-      <button
-        className="w-buttonSmall h-asdf rounded-2xl bg-deepdark text-white"
-        onClick={() => setOpen(true)}
-      >
+      <Button size="large" colors="deepdark" onClick={onLockScroll}>
         모달열기
-      </button>
-      <ModalPortal>
-        <Modal open={open} onClose={() => setOpen(false)} onClick={() => setOpen(false)}>모달입니다</Modal>
-      </ModalPortal>
+      </Button>
+      <Modal open={open} onClose={() => setOpen(false)} onClick={outsideClose}>
+        <h1 className="flex justify-center items-center">
+          메인페이지로 <br></br>이동하시겠습니까?
+        </h1>
+        <br></br>
+        <Button size="small" colors="deepdark" onClick={onScroll}>
+          아니오
+        </Button>
+        <Button size="small" colors="deepdark" onClick={onScroll}>
+          네
+        </Button>
+      </Modal>
     </main>
   );
 }
