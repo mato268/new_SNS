@@ -1,5 +1,6 @@
 import { HTMLAttributes, ReactNode } from "react";
 import ReactDOM from "react-dom";
+import { useEffect } from "react";
 
 interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   onClose: () => void;
@@ -14,6 +15,18 @@ export default function Modal({
   ...rest
 }: ModalProps) {
   const modalRoot = document.getElementById("modal") as HTMLElement;
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [open]);
 
   return ReactDOM.createPortal(
     <div
