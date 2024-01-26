@@ -1,10 +1,9 @@
-import { cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 import { InputHTMLAttributes, ReactNode } from "react";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  sizes: "small" | "medium" | "large";
-  color: "white" | "transparent";
-  variant: "default" | "outline";
+interface InputProps
+  extends InputHTMLAttributes<HTMLInputElement>,
+    VariantProps<typeof inputForm> {
   rightNode: ReactNode;
 }
 
@@ -15,7 +14,7 @@ const inputForm = cva("", {
       medium: "text-md w-inputMedium h-inputmedium",
       small: "text-md w-inputSamll h-inputmedium",
     },
-    color: {
+    colors: {
       white: "bg-white outline-0 indent-5",
       transparent: "bg-transparent outline-0 border-b-2 indent-7",
     },
@@ -28,12 +27,12 @@ const inputForm = cva("", {
 
 export const Input = ({
   sizes,
-  color,
+  colors,
   rightNode,
   variant,
   ...rest
 }: InputProps) => {
-  const inputClass = inputForm({ sizes, color, variant });
+  const inputClass = inputForm({ sizes, colors, variant });
   return (
     <>
       <input className={inputClass} {...rest} />
