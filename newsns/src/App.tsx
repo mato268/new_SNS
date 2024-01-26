@@ -2,6 +2,7 @@ import { useState } from "react";
 import Modal from "./components/Modal";
 import { Input } from "./component/Input";
 import { Button } from "./component/Button";
+import Typo from "./component/Typo";
 
 function App() {
   const [open, setOpen] = useState<boolean>(false);
@@ -9,30 +10,55 @@ function App() {
   const onOutSideClose = () => {
     setOpen(false);
   };
-    
+
   function onClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {}
 
   return (
     <main>
       {/*버튼 구분하기 위함*/}
       <div style={{ backgroundColor: "blue", width: "390px", height: "200px" }}>
-        <Button sizes="large" colors="white" variant="default" onClick={() => onClick}>
-          로그인
+        <Button
+          sizes="large"
+          colors="white"
+          variant="default"
+          onClick={() => onClick}
+        >
+          <Typo fonts="korea">로그인</Typo>
         </Button>
-        <Button sizes="medium" colors="deepdark" variant="default" onClick={() => onClick}>
-          로그인
+        <Button
+          sizes="medium"
+          colors="deepdark"
+          variant="default"
+          onClick={() => onClick}
+        >
+          <Typo fonts="theJamsil">로그인</Typo>
         </Button>
-        <Button sizes="small" colors="deepdark" variant="hover" onClick={() => onClick}>
-          새 계정
+        <Button
+          sizes="small"
+          colors="deepdark"
+          variant="hover"
+          onClick={() => onClick}
+        >
+          <Typo fonts="korea">새 계정</Typo>
         </Button>
-        <Button sizes="small" colors="yellow" variant="default" onClick={() => onClick}>
-          다음
+        <Button
+          sizes="small"
+          colors="yellow"
+          variant="default"
+          onClick={() => onClick}
+        >
+          <Typo fonts="theJamsil">다음</Typo>
         </Button>
-        <Button sizes="Confirmed" colors="yellow" variant="hover" onClick={() => onClick}>
-          인증코드발송
+        <Button
+          sizes="Confirmed"
+          colors="yellow"
+          variant="hover"
+          onClick={() => onClick}
+        >
+          <Typo fonts="korea">인증코드발송</Typo>
         </Button>
       </div>
-      
+
       {/*인풋 구분하기 위함*/}
       <div style={{ backgroundColor: "blue", width: "390px", height: "200px" }}>
         <Input
@@ -60,20 +86,37 @@ function App() {
           variant="default"
         ></Input>
       </div>
-      
-      <Button sizes="large" colors="deepdark" variant="default" onClick={() => setOpen(true)}>
+
+      <Button
+        sizes="large"
+        colors="deepdark"
+        variant="default"
+        onClick={() => setOpen(true)}
+      >
         모달열기
       </Button>
-      <Modal open={open} onClose={() => setOpen(false)} onClick={onOutSideClose}>
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+        onClick={onOutSideClose}
+      >
         <h1 className="flex justify-center">
           메인페이지로 <br></br>이동하시겠습니까?
         </h1>
         <br></br>
         <div className="flex justify-between">
-          <Button sizes="small" colors="deepdark" onClick={() => setOpen(false)}>
+          <Button
+            sizes="small"
+            colors="deepdark"
+            onClick={() => setOpen(false)}
+          >
             아니오
           </Button>
-          <Button sizes="small" colors="deepdark" onClick={() => setOpen(false)}>
+          <Button
+            sizes="small"
+            colors="deepdark"
+            onClick={() => setOpen(false)}
+          >
             네
           </Button>
         </div>
