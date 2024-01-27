@@ -54,6 +54,24 @@ module.exports = {
       korea: ["Korea"],
       theJamsil: ["TheJamsil"],
     },
+    fontSize: {
+      xSmall: "0.75rem",
+      small: "0.875rem",
+      base: "1rem",
+      large: "1.125rem",
+      xLarge: "1.25rem",
+    },
+    fontWeight: {
+      thin: "100",
+      normal: "400",
+      bold: "700",
+      xBold: "900"
+    },
+    lineHeight: {
+      default: "1rem",
+      normal: "1.5rem",
+      loose: "2rem",
+    },
     extend: {},
   },
   plugins: [],
