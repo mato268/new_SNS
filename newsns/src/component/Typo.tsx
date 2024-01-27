@@ -2,6 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { ReactNode } from "react";
 
 interface TypoProps extends VariantProps<typeof TypoForm> {
+  tag?: keyof JSX.IntrinsicElements;
   children: ReactNode;
 }
 
@@ -32,12 +33,15 @@ const TypoForm = cva("", {
   },
 });
 
-export default function Typo({ children, fonts, ...rest }: TypoProps) {
+export default function Typo({
+  tag: Tag = "span",
+  children,
+  fonts,
+  ...rest
+}: TypoProps) {
   return (
     <>
-      <span className={TypoForm({ fonts, ...rest })}>
-        {children}
-      </span>
+      <Tag className={TypoForm({ fonts, ...rest })}>{children}</Tag>
     </>
   );
 }

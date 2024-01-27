@@ -23,7 +23,7 @@ function App() {
           variant="default"
           onClick={() => onClick}
         >
-          <Typo fonts="korea">로그인</Typo>
+          <Typo tag="h1" fonts="korea">로그인</Typo>
         </Button>
         <Button
           sizes="medium"
@@ -31,7 +31,7 @@ function App() {
           variant="default"
           onClick={() => onClick}
         >
-          <Typo fonts="theJamsil">로그인</Typo>
+          <Typo tag="p" fonts="theJamsil">로그인</Typo>
         </Button>
         <Button
           sizes="small"
