@@ -39,9 +39,5 @@ export default function Typo({
   fonts,
   ...rest
 }: TypoProps) {
-  return (
-    <>
-      <Tag className={TypoForm({ fonts, ...rest })}>{children}</Tag>
-    </>
-  );
+  return <Tag className={TypoForm({ fonts, ...rest })}>{children}</Tag>;
 }
