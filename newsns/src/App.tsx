@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Modal from "./components/Modal";
-import { Input } from "./component/Input";
-import { Button } from "./component/Button";
-import Typo from "./component/Typo";
+import { Input } from "./components/Input";
+import { Button } from "./components/Button";
+import Typo from "./components/Typo";
 
 function App() {
   const [open, setOpen] = useState<boolean>(false);
