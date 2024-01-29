@@ -13,6 +13,7 @@ module.exports = {
       green: "#00cd2d",
     },
     width: {
+      width: "390px",
       inputLarge: "332px",
       inputMedium: "332px",
       inputSamll: "226px",
@@ -26,6 +27,7 @@ module.exports = {
       widthZero: "w-0",
     },
     height: {
+      height: "844px",
       inputLarge: "63px",
       inputmedium: "48px",
       input: "48px",
