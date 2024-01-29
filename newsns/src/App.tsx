@@ -3,7 +3,6 @@ import LogIn from "./LogIn";
 import SignUpPage from "./SignUpPage";
 
 function App() {
-  function onClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {}
 
   return (
     <BrowserRouter>
