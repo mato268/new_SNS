@@ -34,7 +34,7 @@ export default function SignUpPage() {
           </Typo>
         </div>
         <div className="absolute right-8">
-          <Button sizes="Confirmed" colors="yellow" variant="hover">
+          <Button sizes="Confirmed" colors="yellow">
             <Typo fonts="korea">
             인증코드발송
             </Typo>
