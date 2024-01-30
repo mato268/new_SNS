@@ -6,7 +6,7 @@ export default function SignUpPage() {
   return (
     <div className="bg-deepdark w-width h-height fixed">
       <div className="absolute top-1/2 -mt-64 text-center mx-auto my-0 space-y-8">
-        <Typo fonts="korea" sizes="large" weights="normal" fontColor="yellow">
+        <Typo fonts="korea" sizes="xLarge" weights="normal" fontColor="yellow">
           /*회원가입을 환영해*/
         </Typo>
         <div className="space-y-8">
@@ -35,9 +35,7 @@ export default function SignUpPage() {
         </div>
         <div className="absolute right-8">
           <Button sizes="Confirmed" colors="yellow">
-            <Typo fonts="korea">
             인증코드발송
-            </Typo>
           </Button>
         </div>
       </div>
