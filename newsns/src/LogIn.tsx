@@ -1,15 +1,16 @@
+import { MouseEvent } from "react";
 import { Button } from "./components/Button";
 import Typo from "./components/Typo";
 import { Link } from "react-router-dom";
 
 export default function LogIn() {
-  function onClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {}
+  function onClick(e: MouseEvent<HTMLButtonElement, MouseEvent>) {}
 
   return (
     <div className="bg-deepdark w-width h-height fixed">
       <div className="absolute top-1/2 -mt-48 mx-auto my-0 right-8 space-y-8">
-        <div>
           <Typo
+            tag="strong"
             fonts="korea"
             sizes="large"
             weights="normal"
@@ -18,9 +19,8 @@ export default function LogIn() {
           >
             print("Hello 갭잘알")
           </Typo>
-        </div>
         <div>
-          <Button sizes="large" colors="white" variant="default">
+          <Button sizes="large" colors="white" onClick={() => onClick}>
             <Typo
               fonts="korea"
               sizes="large"
@@ -33,22 +33,19 @@ export default function LogIn() {
           </Button>
         </div>
         <div>
-          <Button
-            sizes="large"
-            colors="white"
-            variant="hover"
-            onClick={() => onClick}
-          >
-            <Typo
-              fonts="korea"
-              sizes="large"
-              weights="normal"
-              lineHeight="default"
-              fontColor="deepdark"
-            >
-              <Link to={"/signUP"}>회원가입</Link>
-            </Typo>
-          </Button>
+          <Link to={"/signUP"}>
+            <Button sizes="large" colors="white" onClick={() => onClick}>
+              <Typo
+                fonts="korea"
+                sizes="large"
+                weights="normal"
+                lineHeight="default"
+                fontColor="deepdark"
+              >
+                회원가입
+              </Typo>
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
