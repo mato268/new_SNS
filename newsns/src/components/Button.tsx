@@ -20,22 +20,12 @@ const buttonForm = cva("", {
       deepdark: "bg-deepdark text-white",
       yellow: "bg-yellow text-deepdark",
     },
-    variant: {
-      default: "",
-      hover: "hover:bg-gray",
-    },
   },
 });
 
-export const Button = ({
-  children,
-  sizes,
-  colors,
-  variant,
-  ...rest
-}: ButtonProps) => {
+export const Button = ({ children, sizes, colors, ...rest }: ButtonProps) => {
   return (
-    <button className={buttonForm({ sizes, colors, variant })} {...rest}>
+    <button className={buttonForm({ sizes, colors })} {...rest}>
       {children}
     </button>
   );
