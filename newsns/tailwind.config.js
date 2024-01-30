@@ -57,11 +57,11 @@ module.exports = {
       theJamsil: ["TheJamsil"],
     },
     fontSize: {
-      xSmall: "0.75rem",
-      small: "0.875rem",
-      base: "1rem",
-      large: "1.125rem",
-      xLarge: "1.25rem",
+      xSmall: "0.75em",
+      small: "0.87em",
+      base: "1em",
+      large: "1.125em",
+      xLarge: "1.25em",
     },
     fontWeight: {
       thin: "100",

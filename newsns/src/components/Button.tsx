@@ -10,10 +10,10 @@ interface ButtonProps
 const buttonForm = cva("", {
   variants: {
     sizes: {
-      large: "text-large w-buttonLarge h-buttonLarge rounded-2xl",
-      medium: "text-base w-buttonMedium h-buttonMedium rounded-2xl",
-      small: "text-small w-buttonSmall h-buttonSmall rounded-2xl",
-      Confirmed: "text-small w-buttonConfirmed h-buttonConfirmed rounded-2xl",
+      large: "text-xLarge font-korea w-buttonLarge h-buttonLarge rounded-2xl",
+      medium: "text-base font-korea w-buttonMedium h-buttonMedium rounded-2xl",
+      small: "text-small font-korea w-buttonSmall h-buttonSmall rounded-2xl",
+      Confirmed: "text-small font-korea w-buttonConfirmed h-buttonConfirmed rounded-2xl",
     },
     colors: {
       white: "bg-white text-deepdark",
