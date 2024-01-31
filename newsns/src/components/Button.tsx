@@ -24,8 +24,9 @@ const buttonForm = cva("", {
 });
 
 export const Button = ({ children, sizes, colors, ...rest }: ButtonProps) => {
+  const buttonClass = buttonForm({ sizes, colors });
   return (
-    <button className={buttonForm({ sizes, colors })} {...rest}>
+    <button className={buttonClass} {...rest}>
       {children}
     </button>
   );
