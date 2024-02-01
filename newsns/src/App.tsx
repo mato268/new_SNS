@@ -1,14 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import LogIn from "./LogIn";
+import Home from "./LogIn";
 import SignUpPage from "./SignUpPage";
 
 function App() {
 
   return (
     <BrowserRouter>
-      <main>
+      <main className="flex justify-center">
         <Routes>
-          <Route path="/" element={<LogIn />}></Route>
+          <Route path="/" element={<Home />}></Route>
           <Route path="signUP" element={<SignUpPage />}></Route>
         </Routes>
       </main>
