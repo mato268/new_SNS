@@ -3,7 +3,6 @@ import Home from "./LogIn";
 import SignUpPage from "./SignUpPage";
 
 function App() {
-
   return (
     <BrowserRouter>
       <main className="flex justify-center">

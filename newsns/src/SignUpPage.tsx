@@ -4,8 +4,8 @@ import Typo from "./components/Typo";
 
 export default function SignUpPage() {
   return (
-    <div className="bg-deepdark w-width h-height fixed">
-      <div className="absolute top-1/2 -mt-64 text-center mx-auto my-0 space-y-8">
+    <div className="bg-deepdark w-width sm:w-xWidth md:w-xLwidth h-height sm:h-xheight md:h-xLheight flex justify-center text-center items-center fixed">
+      <div className="absolute top-1/2 h-full -mt-64 space-y-8">
         <Typo tag="h1" fonts="korea" sizes="xLarge" weights="normal" fontColor="yellow">
           /*회원가입을 환영해*/
         </Typo>

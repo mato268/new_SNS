@@ -2,6 +2,10 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    screens: {
+      sm: { min: "390px", max: "819px" },
+      md: { min: "820px", max: "1079px" },
+    },
     colors: {
       transparent: "transparent",
       current: "currentColor",
@@ -14,6 +18,8 @@ module.exports = {
     },
     width: {
       width: "390px",
+      xWidth: "500px",
+      xLwidth: "700px",
       inputLarge: "332px",
       inputMedium: "332px",
       inputSamll: "226px",
@@ -28,6 +34,8 @@ module.exports = {
     },
     height: {
       height: "844px",
+      xheight: "1000px",
+      xLheight: "1200px",
       inputLarge: "63px",
       inputmedium: "48px",
       input: "48px",
@@ -36,6 +44,7 @@ module.exports = {
       buttonSmall: "44.42px",
       buttonConfirmed: "44px",
       full: "h-full",
+      screen: "h-screen",
       asdf: "1200px", //스크롤 방지 확인용
     },
     maxWidth: {
