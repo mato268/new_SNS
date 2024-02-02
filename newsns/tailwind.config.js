@@ -60,6 +60,7 @@ module.exports = {
       modalMinWidth: "305px",
     },
     minHeight: {
+      nickNameMinHeight: "25px",
       modalMinHeight: "251px",
     },
     fontFamily: {

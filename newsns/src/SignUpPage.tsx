@@ -20,7 +20,7 @@ export default function SignUpPage() {
   };
   return (
     <div className="bg-deepdark w-width sm:w-width md:w-xWidth lg:w-xLwidth h-full flex justify-center text-center items-center relative">
-      <div className="absolute top-1/3 -mt-48 space-y-8">
+      <div className="absolute top-1/3 -mt-48 space-y-6">
         <Typo
           tag="h1"
           fonts="korea"
@@ -30,8 +30,8 @@ export default function SignUpPage() {
         >
           /*회원가입을 환영해*/
         </Typo>
-        <div className="space-y-2">
-          <div className="relative">
+        <div className="space-y-1">
+          <div className="relative min-h-nickNameMinHeight flex justify-start left-12">
             {nickname.length === 0 && (
               <Typo tag="p" fonts="korea" sizes="small" fontColor="green">
                 /*6글자까지 가능합니다*/
