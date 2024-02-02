@@ -7,7 +7,7 @@ function App() {
     <BrowserRouter>
       <main className="flex justify-center">
         <Routes>
-          <Route path="Home" element={<LogIn />}></Route>
+          <Route path="LogIn" element={<LogIn />}></Route>
           <Route path="signUP" element={<SignUpPage />}></Route>
         </Routes>
       </main>
