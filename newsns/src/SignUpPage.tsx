@@ -19,7 +19,7 @@ export default function SignUpPage() {
     }
   };
   return (
-    <div className="bg-deepdark w-full h-full flex justify-center text-center items-center relative">
+    <div className="bg-deepdark w-full h-full w-screen h-screen flex justify-center text-center items-center relative">
       <div className="absolute top-1/3 -mt-48 space-y-8">
         <Typo
           tag="h1"
