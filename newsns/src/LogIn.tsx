@@ -7,7 +7,7 @@ export default function LogIn() {
   function onClick(e: MouseEvent<HTMLButtonElement, MouseEvent>) {}
 
   return (
-    <div className="bg-deepdark w-width sm:w-xWidth md:w-xLwidth h-height sm:h-xheight md:h-xLheight flex justify-center fixed">
+    <div className="bg-deepdark w-width sm:w-width md:w-xWidth lg:w-xLwidth h-height sm:h-height md:h-xheight lg:h-xLheight flex justify-center relative">
       <div className="absolute top-1/2 -mt-48 h-full space-y-8">
         <Typo
           tag="h1"

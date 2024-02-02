@@ -3,8 +3,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     screens: {
-      sm: { min: "390px", max: "819px" },
-      md: { min: "820px", max: "1079px" },
+      sm: { min: "0px", max: "381px" },
+      md: { min: "390px", max: "819px" },
+      lg: { min: "820px", max: "1079px" },
     },
     colors: {
       transparent: "transparent",
@@ -76,7 +77,7 @@ module.exports = {
       thin: "100",
       normal: "400",
       bold: "700",
-      xBold: "900"
+      xBold: "900",
     },
     lineHeight: {
       default: "1rem",
