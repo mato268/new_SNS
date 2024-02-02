@@ -8,7 +8,7 @@ export default function SignUpPage() {
   const [nickname, setNickname] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleNicknameChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const onNicknameChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setNickname(value);
 
@@ -50,7 +50,7 @@ export default function SignUpPage() {
             rightNode="iconName1"
             placeholder="닉네임을 입력해주세요"
             value={nickname}
-            onChange={handleNicknameChange}
+            onChange={onNicknameChange}
             variant="outline"
           ></Input>
         </div>
