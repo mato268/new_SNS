@@ -34,9 +34,9 @@ module.exports = {
       widthZero: "w-0",
     },
     height: {
-      height: "844px",
-      xheight: "1000px",
-      xLheight: "1200px",
+      height: "100%",
+      xheight: "100%",
+      xLheight: "100%",
       inputLarge: "63px",
       inputmedium: "48px",
       input: "48px",
@@ -44,8 +44,8 @@ module.exports = {
       buttonMedium: "63px",
       buttonSmall: "44.42px",
       buttonConfirmed: "44px",
-      full: "h-full",
-      screen: "h-screen",
+      full: "100%",
+      screen: "100vh",
       asdf: "1200px", //스크롤 방지 확인용
     },
     maxWidth: {
