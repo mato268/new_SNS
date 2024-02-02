@@ -36,19 +36,19 @@ module.exports = {
       screen: "100vh",
     },
     maxWidth: {
-      maxWidth: "390",
-      modalMaxWidth: "332px",
+      sm: "332px",
+      md: "390px",
     },
     maxHeight: {
-      maxHeight: "844px",
-      modalMaxHeight: "293px",
+      sm: "293px",
+      md: "844px",
     },
     minWidth: {
-      modalMinWidth: "305px",
+      md: "305px",
     },
     minHeight: {
-      nickNameMinHeight: "25px",
-      modalMinHeight: "251px",
+      sm: "25px",
+      md: "251px",
     },
     fontFamily: {
       korea: ["Korea"],

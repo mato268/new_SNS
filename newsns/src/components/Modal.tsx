@@ -34,7 +34,7 @@ export default function Modal({
       {...rest}
     >
       <div
-        className={`absolute top-1/2 -mt-32 bg-white rounded-2xl p-10 max-w-modalMaxWidth min-w-modalMinWidth max-h-modalMaxHeight min-h-modalMinHeight 
+        className={`absolute top-1/2 -mt-32 bg-white rounded-2xl p-10 max-w-md min-w-md max-h-md min-h-md 
         ${open ? "" : "hidden"}`}
         onClick={e => e.stopPropagation()}
       >

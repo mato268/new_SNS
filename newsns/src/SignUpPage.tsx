@@ -31,7 +31,7 @@ export default function SignUpPage() {
           /*회원가입을 환영해*/
         </Typo>
         <div className="space-y-1">
-          <div className="relative min-h-nickNameMinHeight flex justify-start left-12">
+          <div className="relative min-h-sm flex justify-start left-12">
             {nickname.length === 0 && (
               <Typo tag="p" fonts="korea" sizes="small" fontColor="green">
                 /*6글자까지 가능합니다*/
