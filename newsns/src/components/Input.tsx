@@ -10,9 +10,9 @@ interface InputProps
 const inputForm = cva("", {
   variants: {
     sizes: {
-      large: "text-large font-korea w-inputLarge h-inputLarge",
-      medium: "text-base font-korea w-inputMedium h-inputmedium",
-      small: "text-base font-korea w-inputSamll h-inputmedium",
+      large: "text-large font-korea w-xl h-lg",
+      medium: "text-base font-korea w-xl h-lg",
+      small: "text-base font-korea w-lg h-lg",
     },
     colors: {
       white: "bg-white outline-0 indent-5",
