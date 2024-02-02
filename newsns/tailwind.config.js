@@ -18,9 +18,6 @@ module.exports = {
       green: "#00cd2d",
     },
     width: {
-      width: "390px",
-      xWidth: "500px",
-      xLwidth: "700px",
       inputLarge: "332px",
       inputMedium: "332px",
       inputSamll: "226px",
@@ -29,14 +26,12 @@ module.exports = {
       buttonSmall: "98px",
       buttonConfirmed: "140px",
       auto: "w-auto",
-      full: "w-full",
+      full: "100%",
+      screen: "100vh",
       harf: "w-1/2",
       widthZero: "w-0",
     },
     height: {
-      height: "100%",
-      xheight: "100%",
-      xLheight: "100%",
       inputLarge: "63px",
       inputmedium: "48px",
       input: "48px",
@@ -46,14 +41,13 @@ module.exports = {
       buttonConfirmed: "44px",
       full: "100%",
       screen: "100vh",
-      asdf: "1200px", //스크롤 방지 확인용
     },
     maxWidth: {
       maxWidth: "390",
       modalMaxWidth: "332px",
     },
     maxHeight: {
-      maxHeight: "844",
+      maxHeight: "844px",
       modalMaxHeight: "293px",
     },
     minWidth: {

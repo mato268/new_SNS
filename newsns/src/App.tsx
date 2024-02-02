@@ -5,12 +5,14 @@ import LogIn from "./LogIn";
 function App() {
   return (
     <BrowserRouter>
-      <main className="flex justify-center h-screen">
-        <Routes>
-          <Route path="LogIn" element={<LogIn />}></Route>
-          <Route path="signUP" element={<SignUpPage />}></Route>
-        </Routes>
-      </main>
+      <body className="flex justify-center">
+        <main className="flex justify-center w-screen h-screen">
+          <Routes>
+            <Route path="LogIn" element={<LogIn />}></Route>
+            <Route path="signUP" element={<SignUpPage />}></Route>
+          </Routes>
+        </main>
+      </body>
     </BrowserRouter>
   );
 }
