@@ -7,8 +7,8 @@ export default function LogIn() {
   function onClick(e: MouseEvent<HTMLButtonElement, MouseEvent>) {}
 
   return (
-    <div className="bg-deepdark w-full w-screen h-screen h-full flex justify-center relative">
-      <div className="absolute top-1/2 -mt-48 space-y-8">
+    <div className="bg-deepdark w-full gap-9 h-full flex justify-center flex-col">
+      <div className="px-9">
         <Typo
           tag="h1"
           fonts="korea"
@@ -19,19 +19,18 @@ export default function LogIn() {
         >
           print("Hello 갭잘알")
         </Typo>
-        <div>
-          <Button sizes="large" colors="white" onClick={() => onClick}>
-            로그인
-          </Button>
-        </div>
-        <div>
-          <Link to={"/signUP"}>
-            <Button sizes="large" colors="white" onClick={() => onClick}>
-              회원가입
-            </Button>
-          </Link>
-        </div>
       </div>
+      <div className="flex px-7 justify-center flex-col gap-6">
+        <Button sizes="large" colors="white" onClick={() => onClick}>
+          로그인
+        </Button>
+        <Link className="w-full" to={"/signUP"}>
+          <Button sizes="large" colors="white" onClick={() => onClick}>
+            회원가입
+          </Button>
+        </Link>
+      </div>
+      {/* </div> */}
     </div>
   );
 }

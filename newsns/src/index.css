@@ -3,25 +3,30 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Korea';
-  src: url('./fonts/한국기계연구원_bold.ttf')
+  font-family: "Korea";
+  src: url("./fonts/한국기계연구원_bold.ttf");
 }
 
 @font-face {
-  font-family: 'TheJamsil';
-  src: url('./fonts/The_Jamsil_OTF_2_Light.otf')
+  font-family: "TheJamsil";
+  src: url("./fonts/The_Jamsil_OTF_2_Light.otf");
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+html {
+  height: 100%;
 }

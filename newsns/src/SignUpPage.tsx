@@ -52,7 +52,7 @@ export default function SignUpPage() {
             value={nickname}
             onChange={onNicknameChange}
             variant="outline"
-          ></Input>
+          />
         </div>
         <div className="space-y-8">
           <Input
@@ -62,7 +62,7 @@ export default function SignUpPage() {
             rightNode="iconName2"
             placeholder="이메일을 입력해 주세요"
             variant="outline"
-          ></Input>
+          />
         </div>
         <div className="absolute right-8">
           <Button sizes="Confirmed" colors="yellow">

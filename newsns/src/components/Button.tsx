@@ -10,7 +10,7 @@ interface ButtonProps
 const buttonForm = cva("", {
   variants: {
     sizes: {
-      large: "text-xLarge font-korea w-xl h-lg rounded-2xl",
+      large: "text-xLarge font-korea w-full h-lg rounded-2xl",
       medium: "text-base font-korea w-md h-md rounded-2xl",
       small: "text-small font-korea w-sm h-sm rounded-2xl",
       Confirmed: "text-small font-korea w-md h-sm rounded-2xl",
