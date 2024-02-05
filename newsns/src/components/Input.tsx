@@ -4,7 +4,7 @@ import { InputHTMLAttributes, ReactNode } from "react";
 interface InputProps
   extends InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof inputForm> {
-  rightNode: ReactNode;
+  rightNode?: ReactNode;
 }
 
 const inputForm = cva("", {
