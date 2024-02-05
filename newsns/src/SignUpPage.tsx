@@ -1,12 +1,18 @@
 import { Button } from "./components/Button";
 import { Input } from "./components/Input";
 import Typo from "./components/Typo";
+import Modal from "./components/Modal";
 import { useState } from "react";
 import { ChangeEvent } from "react";
+import { MouseEvent } from "react";
+import { Link } from "react-router-dom";
 
 export default function SignUpPage() {
   const [nickname, setNickname] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [open, setOpen] = useState<boolean>(false);
+
+  function onClick(e: MouseEvent<HTMLButtonElement, MouseEvent>) {}
 
   const onNicknameChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -89,8 +95,48 @@ export default function SignUpPage() {
         </div>
       </div>
       <div className="pl-64 pr-7 flex mt-20">
-        <Button sizes="small" colors="yellow">다음</Button>
+        <Button sizes="small" colors="yellow" onClick={() => setOpen(true)}>
+          다음
+        </Button>
       </div>
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <div className="flex flex-col gap-3">
+          <div className="text-center">
+            <Typo tag="h1" fonts="korea" sizes="xLarge" fontColor="green">
+              가입완료
+            </Typo>
+          </div>
+          <div className="text-center">
+            <Typo
+              tag="p"
+              fonts="theJamsil"
+              sizes="xLarge"
+              fontColor="deepdark"
+              weights="thin"
+            >
+              메인페이지로<br></br>이동하시겠습니까?
+            </Typo>
+          </div>
+          <div className="w-full gap-7 h-full flex justify-between">
+            <Link className="w-full" to={"/LogIn"}>
+              <Button
+                sizes="small"
+                colors="deepdark"
+                onClick={() => setOpen(false)}
+              >
+                아니오
+              </Button>
+            </Link>
+            <Button
+              sizes="small"
+              colors="deepdark"
+              onClick={() => setOpen(false)}
+            >
+              네
+            </Button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 }
