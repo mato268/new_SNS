@@ -4,15 +4,12 @@ import Typo from "./components/Typo";
 import Modal from "./components/Modal";
 import { useState } from "react";
 import { ChangeEvent } from "react";
-import { MouseEvent } from "react";
 import { Link } from "react-router-dom";
 
 export default function SignUpPage() {
   const [nickname, setNickname] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [open, setOpen] = useState<boolean>(false);
-
-  function onClick(e: MouseEvent<HTMLButtonElement, MouseEvent>) {}
 
   const onNicknameChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -120,11 +117,7 @@ export default function SignUpPage() {
           </div>
           <div className="w-full gap-7 h-full flex justify-between">
             <Link className="w-full" to={"/LogIn"}>
-              <Button
-                sizes="small"
-                colors="deepdark"
-                onClick={() => setOpen(false)}
-              >
+              <Button sizes="small" colors="deepdark">
                 아니오
               </Button>
             </Link>
