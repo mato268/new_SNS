@@ -11,8 +11,7 @@ const inputForm = cva("", {
   variants: {
     sizes: {
       large: "text-large font-korea w-full h-lg",
-      medium: "text-base font-korea w-full h-lg",
-      small: "text-base font-korea w-full h-lg",
+      small: "text-base font-korea w-full h-sm",
     },
     colors: {
       white: "bg-white outline-0 indent-5",

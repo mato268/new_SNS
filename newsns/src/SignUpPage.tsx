@@ -68,6 +68,26 @@ export default function SignUpPage() {
           인증코드발송
         </Button>
       </div>
+      <div className="px-7 h-lg flex justify-between">
+        <div className="px-1">
+          <Input type="text" sizes="small" colors="white" variant="outline" />
+        </div>
+        <div className="px-1">
+          <Input type="text" sizes="small" colors="white" variant="outline" />
+        </div>
+        <div className="px-1">
+          <Input type="text" sizes="small" colors="white" variant="outline" />
+        </div>
+        <div className="px-1">
+          <Input type="text" sizes="small" colors="white" variant="outline" />
+        </div>
+        <div className="px-1">
+          <Input type="text" sizes="small" colors="white" variant="outline" />
+        </div>
+        <div className="px-1">
+          <Input type="text" sizes="small" colors="white" variant="outline" />
+        </div>
+      </div>
     </div>
   );
 }
