@@ -10,9 +10,9 @@ interface InputProps
 const inputForm = cva("", {
   variants: {
     sizes: {
-      large: "text-large font-korea w-xl h-lg",
-      medium: "text-base font-korea w-xl h-lg",
-      small: "text-base font-korea w-lg h-lg",
+      large: "text-large font-korea w-full h-lg",
+      medium: "text-base font-korea w-full h-lg",
+      small: "text-base font-korea w-full h-lg",
     },
     colors: {
       white: "bg-white outline-0 indent-5",
@@ -34,9 +34,11 @@ export const Input = ({
 }: InputProps) => {
   const inputClass = inputForm({ sizes, colors, variant });
   return (
-    <>
+    <div>
       <input className={inputClass} {...rest} />
+      <div className="relative float-right -translate-y-11">
       {rightNode}
-    </>
+      </div>
+    </div>
   );
 };

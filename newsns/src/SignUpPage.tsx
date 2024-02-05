@@ -19,8 +19,8 @@ export default function SignUpPage() {
     }
   };
   return (
-    <div className="bg-deepdark w-full h-full w-screen h-screen flex justify-center text-center items-center relative">
-      <div className="absolute top-1/3 -mt-44 space-y-8">
+    <div className="bg-deepdark w-full gap-6 h-full flex justify-center flex-col">
+      <div className="px-9 text-center -mt-36">
         <Typo
           tag="h1"
           fonts="korea"
@@ -30,45 +30,43 @@ export default function SignUpPage() {
         >
           /*회원가입을 환영해*/
         </Typo>
-        <div className="space-y-1">
-          <div className="relative min-h-sm flex justify-start left-12">
-            {nickname.length === 0 && (
-              <Typo tag="p" fonts="korea" sizes="small" fontColor="green">
-                /*6글자까지 가능합니다*/
-              </Typo>
-            )}
-            {errorMessage && (
-              <Typo tag="p" fonts="korea" sizes="small" fontColor="red">
-                {errorMessage}
-              </Typo>
-            )}
-          </div>
-          <Input
-            type="text"
-            sizes="large"
-            colors="white"
-            rightNode="iconName1"
-            placeholder="닉네임을 입력해주세요"
-            value={nickname}
-            onChange={onNicknameChange}
-            variant="outline"
-          />
-        </div>
-        <div className="space-y-8">
-          <Input
-            type="text"
-            sizes="large"
-            colors="white"
-            rightNode="iconName2"
-            placeholder="이메일을 입력해 주세요"
-            variant="outline"
-          />
-        </div>
-        <div className="absolute right-8">
-          <Button sizes="Confirmed" colors="yellow">
-            인증코드발송
-          </Button>
-        </div>
+      </div>
+      <div className="px-12 min-h-sm flex justify-start">
+        {nickname.length === 0 && (
+          <Typo tag="p" fonts="korea" sizes="small" fontColor="green">
+            /*6글자까지 가능합니다*/
+          </Typo>
+        )}
+        {errorMessage && (
+          <Typo tag="p" fonts="korea" sizes="small" fontColor="red">
+            {errorMessage}
+          </Typo>
+        )}
+      </div>
+      <div className="flex px-7 -mt-4 justify-center flex-col gap-6">
+        <Input
+          type="text"
+          sizes="large"
+          colors="white"
+          rightNode="iconName1"
+          placeholder="닉네임을 입력해주세요"
+          value={nickname}
+          onChange={onNicknameChange}
+          variant="outline"
+        />
+        <Input
+          type="text"
+          sizes="large"
+          colors="white"
+          rightNode="iconName2"
+          placeholder="이메일을 입력해주세요"
+          variant="outline"
+        />
+      </div>
+      <div className="pl-52 pr-7 -mt-7 flex">
+        <Button sizes="Confirmed" colors="yellow">
+          인증코드발송
+        </Button>
       </div>
     </div>
   );
