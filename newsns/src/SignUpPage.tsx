@@ -54,7 +54,7 @@ export default function SignUpPage() {
           type="text"
           sizes="large"
           colors="white"
-          rightNode="iconName1"
+          rightNode="icon1"
           placeholder="닉네임을 입력해주세요"
           value={nickname}
           onChange={onNicknameChange}
@@ -65,11 +65,12 @@ export default function SignUpPage() {
           type="text"
           sizes="large"
           colors="white"
+          rightNode="icon2"
           placeholder="이메일을 입력해주세요"
           variant="outline"
         />
       </div>
-      <div className="pl-52 pr-7 flex">
+      <div className="pl-52 pr-7 -mt-6 flex">
         <Button sizes="Confirmed" colors="yellow">
           인증코드발송
         </Button>
