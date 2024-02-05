@@ -20,7 +20,7 @@ export default function SignUpPage() {
   };
   return (
     <div className="bg-deepdark w-full gap-6 h-full flex justify-center flex-col">
-      <div className="px-9 text-center -mt-36">
+      <div className="px-9 text-center -mt-6">
         <Typo
           tag="h1"
           fonts="korea"
@@ -87,6 +87,9 @@ export default function SignUpPage() {
         <div className="px-1">
           <Input type="text" sizes="small" colors="white" variant="outline" />
         </div>
+      </div>
+      <div className="pl-64 pr-7 flex mt-20">
+        <Button sizes="small" colors="yellow">다음</Button>
       </div>
     </div>
   );
