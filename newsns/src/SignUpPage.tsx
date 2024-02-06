@@ -8,17 +8,37 @@ import { Link } from "react-router-dom";
 
 export default function SignUpPage() {
   const [nickname, setNickname] = useState("");
+  const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [open, setOpen] = useState<boolean>(false);
+
+  const validateEmail = (email: string): boolean => {
+    const emailForm = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailForm.test(email);
+  };
 
   const onNicknameChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setNickname(value);
 
     if (value.length > 6) {
-      setErrorMessage("/*6글자 이상입니다*/");
-    } else {
       setErrorMessage("");
+    } else {
+      setNickname(value);
+      setErrorMessage("");
+    }
+  };
+
+  const onEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+
+    if (value === "") {
+      setEmailErrorMessage("");
+    } else if (!validateEmail(value)) {
+      setEmailErrorMessage("/*이메일 형식이 올바르지 않습니다*/");
+    } else {
+      setEmailErrorMessage("");
     }
   };
   return (
@@ -46,7 +66,7 @@ export default function SignUpPage() {
           </Typo>
         )}
       </div>
-      <div className="flex px-7 -mt-4 justify-center flex-col gap-6">
+      <div className="flex px-7 -mt-6 justify-center flex-col">
         <Input
           type="text"
           sizes="large"
@@ -58,12 +78,21 @@ export default function SignUpPage() {
           variant="outline"
           maxLength={6}
         />
+        <div className="px-5 -mt-4 min-h-sm flex justify-start">
+          {emailErrorMessage && (
+            <Typo tag="p" fonts="korea" sizes="small" fontColor="red">
+              {emailErrorMessage}
+            </Typo>
+          )}
+        </div>
         <Input
           type="text"
           sizes="large"
           colors="white"
           rightNode="icon2"
           placeholder="이메일을 입력해주세요"
+          value={email}
+          onChange={onEmailChange}
           variant="outline"
         />
       </div>
@@ -116,7 +145,7 @@ export default function SignUpPage() {
             </Typo>
           </div>
           <div className="w-full gap-7 h-full flex justify-between">
-            <Link className="w-full" to={"/LogIn"}>
+            <Link className="w-full" to={"/logIn"}>
               <Button sizes="small" colors="deepdark">
                 아니오
               </Button>
