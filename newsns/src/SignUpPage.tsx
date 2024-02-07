@@ -5,6 +5,7 @@ import Modal from "./components/Modal";
 import { useState } from "react";
 import { ChangeEvent } from "react";
 import { Link } from "react-router-dom";
+import { MouseEvent } from "react";
 
 export default function SignUpPage() {
   const [nickname, setNickname] = useState("");
@@ -12,6 +13,8 @@ export default function SignUpPage() {
   const [errorMessage, setErrorMessage] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [open, setOpen] = useState<boolean>(false);
+
+  const onClick = (e: MouseEvent<HTMLButtonElement, MouseEvent>) => {};
 
   const validateEmail = (email: string): boolean => {
     const emailForm = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -39,7 +42,7 @@ export default function SignUpPage() {
       setEmailErrorMessage("/*이메일 형식이 올바르지 않습니다*/");
     }
   };
-  
+
   return (
     <div className="bg-deepdark w-full gap-6 h-full flex justify-center flex-col">
       <div className="px-9 text-center -mt-6">
@@ -59,11 +62,6 @@ export default function SignUpPage() {
             /*6글자까지 가능합니다*/
           </Typo>
         )}
-        {errorMessage && (
-          <Typo tag="p" fonts="korea" sizes="small" fontColor="red">
-            {errorMessage}
-          </Typo>
-        )}
       </div>
       <div className="flex px-7 -mt-6 justify-center flex-col">
         <Input
@@ -74,15 +72,13 @@ export default function SignUpPage() {
           placeholder="닉네임을 입력해주세요"
           value={nickname}
           onChange={onNicknameChange}
-          variant="outline"
+          variant="lgoutline"
           maxLength={6}
         />
         <div className="px-5 -mt-4 min-h-sm flex justify-start">
-          {emailErrorMessage && (
-            <Typo tag="p" fonts="korea" sizes="small" fontColor="red">
-              {emailErrorMessage}
-            </Typo>
-          )}
+          <Typo tag="p" fonts="korea" sizes="small" fontColor="red">
+            {emailErrorMessage}
+          </Typo>
         </div>
         <Input
           type="text"
@@ -92,32 +88,32 @@ export default function SignUpPage() {
           placeholder="이메일을 입력해주세요"
           value={email}
           onChange={onEmailChange}
-          variant="outline"
+          variant="lgoutline"
         />
       </div>
       <div className="pl-52 pr-7 -mt-6 flex">
-        <Button sizes="Confirmed" colors="yellow">
+        <Button sizes="Confirmed" colors="yellow" onClick={() => onClick}>
           인증코드발송
         </Button>
       </div>
-      <div className="px-7 h-lg flex justify-between">
+      <div className="px-7 h-lg mt-4 flex justify-between">
         <div className="px-1">
-          <Input type="text" sizes="small" colors="white" variant="outline" />
+          <Input type="text" sizes="small" colors="white" variant="smOutlind" />
         </div>
         <div className="px-1">
-          <Input type="text" sizes="small" colors="white" variant="outline" />
+          <Input type="text" sizes="small" colors="white" variant="smOutlind" />
         </div>
         <div className="px-1">
-          <Input type="text" sizes="small" colors="white" variant="outline" />
+          <Input type="text" sizes="small" colors="white" variant="smOutlind" />
         </div>
         <div className="px-1">
-          <Input type="text" sizes="small" colors="white" variant="outline" />
+          <Input type="text" sizes="small" colors="white" variant="smOutlind" />
         </div>
         <div className="px-1">
-          <Input type="text" sizes="small" colors="white" variant="outline" />
+          <Input type="text" sizes="small" colors="white" variant="smOutlind" />
         </div>
         <div className="px-1">
-          <Input type="text" sizes="small" colors="white" variant="outline" />
+          <Input type="text" sizes="small" colors="white" variant="smOutlind" />
         </div>
       </div>
       <div className="pl-64 pr-7 flex mt-20">

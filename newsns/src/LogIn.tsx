@@ -4,7 +4,7 @@ import Typo from "./components/Typo";
 import { Link } from "react-router-dom";
 
 export default function LogIn() {
-  function onClick(e: MouseEvent<HTMLButtonElement, MouseEvent>) {}
+  const onClick = (e: MouseEvent<HTMLButtonElement, MouseEvent>) => {}
 
   return (
     <div className="bg-deepdark w-full gap-9 h-full flex justify-center flex-col">
@@ -30,7 +30,6 @@ export default function LogIn() {
           </Button>
         </Link>
       </div>
-      {/* </div> */}
     </div>
   );
 }

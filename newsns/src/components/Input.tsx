@@ -19,7 +19,8 @@ const inputForm = cva("", {
     },
     variant: {
       default: "",
-      outline: "rounded-2xl",
+      smOutlind:"rounded-md",
+      lgoutline: "rounded-2xl",
     },
   },
 });
