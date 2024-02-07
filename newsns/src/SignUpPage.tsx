@@ -33,14 +33,13 @@ export default function SignUpPage() {
     const value = e.target.value;
     setEmail(value);
 
-    if (value === "") {
+    if (validateEmail(value) || value === "") {
       setEmailErrorMessage("");
-    } else if (!validateEmail(value)) {
-      setEmailErrorMessage("/*이메일 형식이 올바르지 않습니다*/");
     } else {
-      setEmailErrorMessage("");
+      setEmailErrorMessage("/*이메일 형식이 올바르지 않습니다*/");
     }
   };
+  
   return (
     <div className="bg-deepdark w-full gap-6 h-full flex justify-center flex-col">
       <div className="px-9 text-center -mt-6">
