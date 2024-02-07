@@ -96,24 +96,24 @@ export default function SignUpPage() {
           인증코드발송
         </Button>
       </div>
-      <div className="px-7 h-lg mt-4 flex justify-between">
+      <div className="px-7 mt-4 flex justify-between">
         <div className="px-1">
-          <Input type="text" sizes="small" colors="white" variant="smOutlind" />
+          <Input type="text" sizes="small" colors="white" variant="smOutlind" maxLength={1}/>
         </div>
         <div className="px-1">
-          <Input type="text" sizes="small" colors="white" variant="smOutlind" />
+          <Input type="text" sizes="small" colors="white" variant="smOutlind" maxLength={1}/>
         </div>
         <div className="px-1">
-          <Input type="text" sizes="small" colors="white" variant="smOutlind" />
+          <Input type="text" sizes="small" colors="white" variant="smOutlind" maxLength={1}/>
         </div>
         <div className="px-1">
-          <Input type="text" sizes="small" colors="white" variant="smOutlind" />
+          <Input type="text" sizes="small" colors="white" variant="smOutlind" maxLength={1}/>
         </div>
         <div className="px-1">
-          <Input type="text" sizes="small" colors="white" variant="smOutlind" />
+          <Input type="text" sizes="small" colors="white" variant="smOutlind" maxLength={1}/>
         </div>
         <div className="px-1">
-          <Input type="text" sizes="small" colors="white" variant="smOutlind" />
+          <Input type="text" sizes="small" colors="white" variant="smOutlind" maxLength={1}/>
         </div>
       </div>
       <div className="pl-64 pr-7 flex mt-20">
