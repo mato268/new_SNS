@@ -6,6 +6,7 @@ import { useState } from "react";
 import { ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import { MouseEvent } from "react";
+import { ReactComponent as ConfirmIcon } from "./icons/confirm.svg";
 
 export default function SignUpPage() {
   const [nickname, setNickname] = useState("");
@@ -68,14 +69,14 @@ export default function SignUpPage() {
           type="text"
           sizes="large"
           colors="white"
-          rightNode="icon1"
+          rightNode={<ConfirmIcon/>}
           placeholder="닉네임을 입력해주세요"
           value={nickname}
           onChange={onNicknameChange}
           variant="lgoutline"
           maxLength={6}
         />
-        <div className="px-5 -mt-4 min-h-sm flex justify-start">
+        <div className="px-5 mt-2 min-h-sm flex justify-start">
           <Typo tag="p" fonts="korea" sizes="small" fontColor="red">
             {emailErrorMessage}
           </Typo>
@@ -84,36 +85,72 @@ export default function SignUpPage() {
           type="text"
           sizes="large"
           colors="white"
-          rightNode="icon2"
+          rightNode={<ConfirmIcon/>}
           placeholder="이메일을 입력해주세요"
           value={email}
           onChange={onEmailChange}
           variant="lgoutline"
         />
       </div>
-      <div className="pl-52 pr-7 -mt-6 flex">
+      <div className="pl-52 pr-7 flex">
         <Button sizes="Confirmed" colors="yellow" onClick={() => onClick}>
           인증코드발송
         </Button>
       </div>
       <div className="px-7 mt-4 flex justify-between">
         <div className="px-1">
-          <Input type="text" sizes="small" colors="white" variant="smOutlind" maxLength={1}/>
+          <Input
+            type="text"
+            sizes="small"
+            colors="white"
+            variant="smOutlind"
+            maxLength={1}
+          />
         </div>
         <div className="px-1">
-          <Input type="text" sizes="small" colors="white" variant="smOutlind" maxLength={1}/>
+          <Input
+            type="text"
+            sizes="small"
+            colors="white"
+            variant="smOutlind"
+            maxLength={1}
+          />
         </div>
         <div className="px-1">
-          <Input type="text" sizes="small" colors="white" variant="smOutlind" maxLength={1}/>
+          <Input
+            type="text"
+            sizes="small"
+            colors="white"
+            variant="smOutlind"
+            maxLength={1}
+          />
         </div>
         <div className="px-1">
-          <Input type="text" sizes="small" colors="white" variant="smOutlind" maxLength={1}/>
+          <Input
+            type="text"
+            sizes="small"
+            colors="white"
+            variant="smOutlind"
+            maxLength={1}
+          />
         </div>
         <div className="px-1">
-          <Input type="text" sizes="small" colors="white" variant="smOutlind" maxLength={1}/>
+          <Input
+            type="text"
+            sizes="small"
+            colors="white"
+            variant="smOutlind"
+            maxLength={1}
+          />
         </div>
         <div className="px-1">
-          <Input type="text" sizes="small" colors="white" variant="smOutlind" maxLength={1}/>
+          <Input
+            type="text"
+            sizes="small"
+            colors="white"
+            variant="smOutlind"
+            maxLength={1}
+          />
         </div>
       </div>
       <div className="pl-64 pr-7 flex mt-20">

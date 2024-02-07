@@ -3,11 +3,11 @@ import { InputHTMLAttributes, ReactNode } from "react";
 
 interface InputProps
   extends InputHTMLAttributes<HTMLInputElement>,
-    VariantProps<typeof inputForm> {
+    VariantProps<typeof inputContainer> {
   rightNode?: ReactNode;
 }
 
-const inputForm = cva("", {
+const inputContainer = cva("px-5 flex items-center justify-between w-full ", {
   variants: {
     sizes: {
       large: "text-large font-korea w-full h-lg",
@@ -19,7 +19,7 @@ const inputForm = cva("", {
     },
     variant: {
       default: "",
-      smOutlind:"rounded-md",
+      smOutlind: "rounded-md",
       lgoutline: "rounded-2xl",
     },
   },
@@ -32,13 +32,11 @@ export const Input = ({
   variant,
   ...rest
 }: InputProps) => {
-  const inputClass = inputForm({ sizes, colors, variant });
+  const inputClass = inputContainer({ sizes, colors, variant });
   return (
-    <div>
-      <input className={inputClass} {...rest} />
-      <div className="relative float-right -translate-y-11">
-      {rightNode}
-      </div>
+    <div className={inputClass}>
+      <input className="w-full outline-none" {...rest} />
+      <div>{rightNode}</div>
     </div>
   );
 };
