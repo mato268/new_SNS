@@ -69,7 +69,9 @@ export default function SignUpPage() {
           type="text"
           sizes="large"
           colors="white"
-          rightNode={<ConfirmIcon/>}
+          rightNode={nickname.length === 6 && (
+            <ConfirmIcon/>
+          )}
           placeholder="닉네임을 입력해주세요"
           value={nickname}
           onChange={onNicknameChange}
@@ -85,7 +87,9 @@ export default function SignUpPage() {
           type="text"
           sizes="large"
           colors="white"
-          rightNode={<ConfirmIcon/>}
+          rightNode={validateEmail(email) && (
+            <ConfirmIcon/>
+          )}
           placeholder="이메일을 입력해주세요"
           value={email}
           onChange={onEmailChange}
