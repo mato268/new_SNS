@@ -15,6 +15,28 @@ export default function SignUpPage() {
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [open, setOpen] = useState<boolean>(false);
 
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("https://cors-anywhere/herokuapp.com/https://port-0-sns-backend-3wh3o2blrdcart6.sel5.cloudtype.app/email/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        throw new Error("제출 실패");
+      }
+
+      console.log("성공");
+    } catch (error) {
+      console.error("실패:", error);
+    }
+  };
+
   const onClick = (e: MouseEvent<HTMLButtonElement, MouseEvent>) => {};
 
   const validateEmail = (email: string): boolean => {
@@ -69,9 +91,7 @@ export default function SignUpPage() {
           type="text"
           sizes="large"
           colors="white"
-          rightNode={nickname.length === 6 && (
-            <ConfirmIcon/>
-          )}
+          rightNode={nickname.length === 6 && <ConfirmIcon />}
           placeholder="닉네임을 입력해주세요"
           value={nickname}
           onChange={onNicknameChange}
@@ -83,23 +103,28 @@ export default function SignUpPage() {
             {emailErrorMessage}
           </Typo>
         </div>
-        <Input
-          type="text"
-          sizes="large"
-          colors="white"
-          rightNode={validateEmail(email) && (
-            <ConfirmIcon/>
-          )}
-          placeholder="이메일을 입력해주세요"
-          value={email}
-          onChange={onEmailChange}
-          variant="lgoutline"
-        />
-      </div>
-      <div className="pl-52 pr-7 flex">
-        <Button sizes="Confirmed" colors="yellow" onClick={() => onClick}>
-          인증코드발송
-        </Button>
+        <form onSubmit={onSubmit}>
+          <Input
+            type="email"
+            sizes="large"
+            colors="white"
+            rightNode={validateEmail(email) && <ConfirmIcon />}
+            placeholder="이메일을 입력해주세요"
+            value={email}
+            onChange={onEmailChange}
+            variant="lgoutline"
+          />
+          <div className="pl-52 pr-7 flex">
+            <Button
+              type="submit"
+              sizes="Confirmed"
+              colors="yellow"
+              onClick={() => onClick}
+            >
+              인증코드발송
+            </Button>
+          </div>
+        </form>
       </div>
       <div className="px-7 mt-4 flex justify-between">
         <div className="px-1">
