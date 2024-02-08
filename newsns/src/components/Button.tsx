@@ -7,7 +7,7 @@ interface ButtonProps
   children: ReactNode;
 }
 
-const buttonForm = cva("", {
+const buttonForm = cva("hover:bg-gray", {
   variants: {
     sizes: {
       large: "text-xLarge font-korea w-full h-lg rounded-2xl",

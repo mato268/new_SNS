@@ -7,7 +7,7 @@ interface InputProps
   rightNode?: ReactNode;
 }
 
-const inputContainer = cva("px-5 flex items-center justify-between w-full ", {
+const inputContainer = cva("px-4 flex items-center justify-between w-full ", {
   variants: {
     sizes: {
       large: "text-large font-korea w-full h-lg",
