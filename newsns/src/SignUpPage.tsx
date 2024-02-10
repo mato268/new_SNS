@@ -12,7 +12,7 @@ export default function SignUpPage() {
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
-  const [open, setOpen] = useState<boolean>(false);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -185,11 +185,11 @@ export default function SignUpPage() {
         </div>
       </div>
       <div className="pl-64 pr-7 flex mt-20">
-        <Button sizes="small" colors="yellow" onClick={() => setOpen(true)}>
+        <Button sizes="small" colors="yellow" onClick={() => setModalOpen(true)}>
           다음
         </Button>
       </div>
-      <Modal open={open} onClose={() => setOpen(false)}>
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
         <div className="flex flex-col gap-3">
           <div className="text-center">
             <Typo tag="h1" fonts="korea" sizes="xLarge" fontColor="green">
@@ -216,7 +216,7 @@ export default function SignUpPage() {
             <Button
               sizes="small"
               colors="deepdark"
-              onClick={() => setOpen(false)}
+              onClick={() => setModalOpen(false)}
             >
               네
             </Button>
