@@ -3,9 +3,8 @@ import { Input } from "./components/Input";
 import Typo from "./components/Typo";
 import Modal from "./components/Modal";
 import { useState } from "react";
-import { ChangeEvent } from "react";
 import { Link } from "react-router-dom";
-import { MouseEvent } from "react";
+import { MouseEvent, FormEvent, ChangeEvent } from "react";
 import { ReactComponent as ConfirmIcon } from "./icons/confirm.svg";
 
 export default function SignUpPage() {
@@ -15,17 +14,20 @@ export default function SignUpPage() {
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [open, setOpen] = useState<boolean>(false);
 
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://cors-anywhere/herokuapp.com/https://port-0-sns-backend-3wh3o2blrdcart6.sel5.cloudtype.app/email/send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+      const response = await fetch(
+        "https://cors-anywhere/herokuapp.com/https://port-0-sns-backend-3wh3o2blrdcart6.sel5.cloudtype.app/email/send",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("제출 실패");
