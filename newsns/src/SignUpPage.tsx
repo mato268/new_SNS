@@ -13,6 +13,7 @@ export default function SignUpPage() {
   const [errorMessage, setErrorMessage] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const EMAIL_FORM = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,19 +43,12 @@ export default function SignUpPage() {
   const onClick = (e: MouseEvent<HTMLButtonElement, MouseEvent>) => {};
 
   const validateEmail = (email: string): boolean => {
-    const emailForm = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailForm.test(email);
+    return EMAIL_FORM.test(email);
   };
 
   const onNicknameChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-
-    if (value.length > 6) {
-      setErrorMessage("");
-    } else {
-      setNickname(value);
-      setErrorMessage("");
-    }
+    setNickname(value);
   };
 
   const onEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -185,7 +179,11 @@ export default function SignUpPage() {
         </div>
       </div>
       <div className="pl-64 pr-7 flex mt-20">
-        <Button sizes="small" colors="yellow" onClick={() => setModalOpen(true)}>
+        <Button
+          sizes="small"
+          colors="yellow"
+          onClick={() => setModalOpen(true)}
+        >
           다음
         </Button>
       </div>
