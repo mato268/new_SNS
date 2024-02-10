@@ -190,7 +190,7 @@ export default function SignUpPage() {
       <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
         <div className="flex flex-col gap-3">
           <div className="text-center">
-            <Typo tag="h1" fonts="korea" sizes="xLarge" fontColor="green">
+            <Typo tag="h2" fonts="korea" sizes="xLarge" fontColor="green">
               가입완료
             </Typo>
           </div>
