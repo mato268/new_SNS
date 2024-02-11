@@ -8,7 +8,7 @@ function App() {
       <main className="w-full flex max-w-md min-w-sm justify-center h-full">
         <Routes>
           <Route path="logIn" element={<LogIn />}></Route>
-          <Route path="signUP" element={<SignUpPage />}></Route>
+          <Route path="signUp" element={<SignUpPage />}></Route>
         </Routes>
       </main>
     </BrowserRouter>

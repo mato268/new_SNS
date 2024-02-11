@@ -24,7 +24,7 @@ export default function LogIn() {
         <Button sizes="large" colors="white" onClick={() => onClick}>
           로그인
         </Button>
-        <Link className="w-full" to={"/signUP"}>
+        <Link className="w-full" to={"/signUp"}>
           <Button sizes="large" colors="white" onClick={() => onClick}>
             회원가입
           </Button>

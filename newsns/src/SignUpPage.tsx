@@ -10,25 +10,23 @@ import { ReactComponent as ConfirmIcon } from "./icons/confirm.svg";
 export default function SignUpPage() {
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [nicknameErrorMessage, setNicknameErrorMessage] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const EMAIL_FORM = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const apiPath = process.env.REACT_APP_SEND_API_PATH || "";
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        "https://cors-anywhere/herokuapp.com/https://port-0-sns-backend-3wh3o2blrdcart6.sel5.cloudtype.app/email/send",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
-        }
-      );
+      const response = await fetch(apiPath, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
 
       if (!response.ok) {
         throw new Error("제출 실패");
@@ -49,6 +47,12 @@ export default function SignUpPage() {
   const onNicknameChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setNickname(value);
+
+    if (value.length === 0 || value.length > 6) {
+      setNicknameErrorMessage("/*6글자까지 가능합니다*/");
+    } else {
+      setNicknameErrorMessage("");
+    }
   };
 
   const onEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -76,11 +80,9 @@ export default function SignUpPage() {
         </Typo>
       </div>
       <div className="px-12 min-h-sm flex justify-start">
-        {nickname.length === 0 && (
-          <Typo tag="p" fonts="korea" sizes="small" fontColor="green">
-            /*6글자까지 가능합니다*/
-          </Typo>
-        )}
+        <Typo tag="p" fonts="korea" sizes="small" fontColor="green">
+          {nicknameErrorMessage}
+        </Typo>
       </div>
       <div className="flex px-7 -mt-6 justify-center flex-col">
         <Input
@@ -110,7 +112,7 @@ export default function SignUpPage() {
             onChange={onEmailChange}
             variant="lgoutline"
           />
-          <div className="pl-52 pr-7 flex">
+          <div className="pl-52 mt-4 flex">
             <Button
               type="submit"
               sizes="Confirmed"
