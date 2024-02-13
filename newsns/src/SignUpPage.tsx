@@ -7,17 +7,22 @@ import { Link } from "react-router-dom";
 import { MouseEvent, FormEvent, ChangeEvent } from "react";
 import { ReactComponent as ConfirmIcon } from "./icons/confirm.svg";
 
+const EMAIL_FORM = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const apiPath = process.env.REACT_APP_SEND_API_PATH || "";
+
 export default function SignUpPage() {
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
   const [nicknameErrorMessage, setNicknameErrorMessage] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const EMAIL_FORM = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const apiPath = process.env.REACT_APP_SEND_API_PATH || "";
+  const [showButtons, setShowButtons] = useState<boolean>(false);
+  const [showInputs, setShowInputs] = useState<boolean>(false);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setShowInputs(true);
+    setShowButtons(true);
 
     try {
       const response = await fetch(apiPath, {
@@ -69,7 +74,11 @@ export default function SignUpPage() {
 
   return (
     <div className="bg-deepdark w-full gap-6 h-full flex justify-center flex-col">
-      <div className="px-9 text-center -mt-6">
+      <div
+        className={`px-9 text-center -mt-6 ${
+          showButtons && showInputs ? "" : "-mt-52"
+        }`}
+      >
         <Typo
           tag="h1"
           fonts="korea"
@@ -90,11 +99,11 @@ export default function SignUpPage() {
           type="text"
           sizes="large"
           colors="white"
-          rightNode={nickname.length === 6 && <ConfirmIcon />}
+          rightNode={nickname.length > 0 && <ConfirmIcon />}
           placeholder="닉네임을 입력해주세요"
           value={nickname}
           onChange={onNicknameChange}
-          variant="lgoutline"
+          variant="lgOutline"
           maxLength={6}
         />
         <div className="px-5 mt-2 min-h-sm flex justify-start">
@@ -111,7 +120,7 @@ export default function SignUpPage() {
             placeholder="이메일을 입력해주세요"
             value={email}
             onChange={onEmailChange}
-            variant="lgoutline"
+            variant="lgOutline"
           />
           <div className="pl-52 mt-4 flex">
             <Button
@@ -124,71 +133,75 @@ export default function SignUpPage() {
             </Button>
           </div>
         </form>
-      </div>
-      <div className="px-7 mt-4 flex justify-between">
-        <div className="px-1">
-          <Input
-            type="text"
-            sizes="small"
-            colors="white"
-            variant="smOutlind"
-            maxLength={1}
-          />
-        </div>
-        <div className="px-1">
-          <Input
-            type="text"
-            sizes="small"
-            colors="white"
-            variant="smOutlind"
-            maxLength={1}
-          />
-        </div>
-        <div className="px-1">
-          <Input
-            type="text"
-            sizes="small"
-            colors="white"
-            variant="smOutlind"
-            maxLength={1}
-          />
-        </div>
-        <div className="px-1">
-          <Input
-            type="text"
-            sizes="small"
-            colors="white"
-            variant="smOutlind"
-            maxLength={1}
-          />
-        </div>
-        <div className="px-1">
-          <Input
-            type="text"
-            sizes="small"
-            colors="white"
-            variant="smOutlind"
-            maxLength={1}
-          />
-        </div>
-        <div className="px-1">
-          <Input
-            type="text"
-            sizes="small"
-            colors="white"
-            variant="smOutlind"
-            maxLength={1}
-          />
-        </div>
-      </div>
-      <div className="pl-64 pr-7 flex mt-20">
-        <Button
-          sizes="small"
-          colors="yellow"
-          onClick={() => setModalOpen(true)}
-        >
-          다음
-        </Button>
+        {showInputs && (
+          <div className="mt-4 flex justify-between">
+            <div className="px-1">
+              <Input
+                type="text"
+                sizes="small"
+                colors="white"
+                variant="smOutline"
+                maxLength={1}
+              />
+            </div>
+            <div className="px-1">
+              <Input
+                type="text"
+                sizes="small"
+                colors="white"
+                variant="smOutline"
+                maxLength={1}
+              />
+            </div>
+            <div className="px-1">
+              <Input
+                type="text"
+                sizes="small"
+                colors="white"
+                variant="smOutline"
+                maxLength={1}
+              />
+            </div>
+            <div className="px-1">
+              <Input
+                type="text"
+                sizes="small"
+                colors="white"
+                variant="smOutline"
+                maxLength={1}
+              />
+            </div>
+            <div className="px-1">
+              <Input
+                type="text"
+                sizes="small"
+                colors="white"
+                variant="smOutline"
+                maxLength={1}
+              />
+            </div>
+            <div className="px-1">
+              <Input
+                type="text"
+                sizes="small"
+                colors="white"
+                variant="smOutline"
+                maxLength={1}
+              />
+            </div>
+          </div>
+        )}
+        {showButtons && (
+          <div className="pl-56 pr-4 flex mt-20">
+            <Button
+              sizes="small"
+              colors="yellow"
+              onClick={() => setModalOpen(true)}
+            >
+              다음
+            </Button>
+          </div>
+        )}
       </div>
       <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
         <div className="flex flex-col gap-3">

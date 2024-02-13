@@ -1,10 +1,11 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { InputHTMLAttributes, ReactNode } from "react";
+import { InputHTMLAttributes, ReactNode, Ref } from "react";
 
 interface InputProps
   extends InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof inputContainer> {
   rightNode?: ReactNode;
+  ref?: Ref<HTMLInputElement>;
 }
 
 const inputContainer = cva("px-4 flex items-center justify-between w-full ", {
@@ -19,8 +20,8 @@ const inputContainer = cva("px-4 flex items-center justify-between w-full ", {
     },
     variant: {
       default: "",
-      smOutlind: "rounded-md",
-      lgoutline: "rounded-2xl",
+      smOutline: "rounded-md",
+      lgOutline: "rounded-2xl",
     },
   },
 });
@@ -30,12 +31,13 @@ export const Input = ({
   colors,
   rightNode,
   variant,
+  ref,
   ...rest
 }: InputProps) => {
   const inputClass = inputContainer({ sizes, colors, variant });
   return (
     <div className={inputClass}>
-      <input className="w-full outline-none" {...rest} />
+      <input className="w-full outline-none" ref={ref} {...rest} />
       <div>{rightNode}</div>
     </div>
   );
