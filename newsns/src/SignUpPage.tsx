@@ -2,7 +2,7 @@ import { Button } from "./components/Button";
 import { Input } from "./components/Input";
 import Typo from "./components/Typo";
 import Modal from "./components/Modal";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { MouseEvent, FormEvent, ChangeEvent } from "react";
 import { ReactComponent as ConfirmIcon } from "./icons/confirm.svg";
@@ -18,8 +18,32 @@ export default function SignUpPage() {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [showButtons, setShowButtons] = useState<boolean>(false);
   const [showInputs, setShowInputs] = useState<boolean>(false);
+  const [verificationCodes, setVerificationCodes] = useState<string[]>([
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+  ]);
 
-  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const inputRefs = useRef<(HTMLInputElement | null)[]>(
+    Array.from({ length: 6 }, () => null)
+  );
+
+  const onInputChangeAndFocus = (e: ChangeEvent<HTMLInputElement>, index: number) => {
+    const { value } = e.target;
+  
+    if (value.length === 1 && index < inputRefs.current.length - 1) {
+      inputRefs.current[index + 1]?.focus();
+    }
+  
+    const verification = [...verificationCodes];
+    verification[index] = value;
+    setVerificationCodes(verification);
+  };
+
+  const onVerificationCodesRequest = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setShowInputs(true);
     setShowButtons(true);
@@ -111,7 +135,7 @@ export default function SignUpPage() {
             {emailErrorMessage}
           </Typo>
         </div>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onVerificationCodesRequest}>
           <Input
             type="email"
             sizes="large"
@@ -127,7 +151,6 @@ export default function SignUpPage() {
               type="submit"
               sizes="Confirmed"
               colors="yellow"
-              onClick={() => onClick}
             >
               인증코드발송
             </Button>
@@ -135,60 +158,22 @@ export default function SignUpPage() {
         </form>
         {showInputs && (
           <div className="mt-4 flex justify-between">
-            <div className="px-1">
-              <Input
-                type="text"
-                sizes="small"
-                colors="white"
-                variant="smOutline"
-                maxLength={1}
-              />
-            </div>
-            <div className="px-1">
-              <Input
-                type="text"
-                sizes="small"
-                colors="white"
-                variant="smOutline"
-                maxLength={1}
-              />
-            </div>
-            <div className="px-1">
-              <Input
-                type="text"
-                sizes="small"
-                colors="white"
-                variant="smOutline"
-                maxLength={1}
-              />
-            </div>
-            <div className="px-1">
-              <Input
-                type="text"
-                sizes="small"
-                colors="white"
-                variant="smOutline"
-                maxLength={1}
-              />
-            </div>
-            <div className="px-1">
-              <Input
-                type="text"
-                sizes="small"
-                colors="white"
-                variant="smOutline"
-                maxLength={1}
-              />
-            </div>
-            <div className="px-1">
-              <Input
-                type="text"
-                sizes="small"
-                colors="white"
-                variant="smOutline"
-                maxLength={1}
-              />
-            </div>
+            {[...Array(6)].map((_, index) => (
+              <div key={index} className="px-1">
+                <Input
+                  type="text"
+                  sizes="small"
+                  colors="white"
+                  variant="smOutline"
+                  maxLength={1}
+                  value={verificationCodes[index]}
+                  onChange={e => onInputChangeAndFocus(e, index)}
+                  inputRef={(e: HTMLInputElement | null) =>
+                    (inputRefs.current[index] = e)
+                  }
+                />
+              </div>
+            ))}
           </div>
         )}
         {showButtons && (
@@ -196,7 +181,7 @@ export default function SignUpPage() {
             <Button
               sizes="small"
               colors="yellow"
-              onClick={() => setModalOpen(true)}
+              onClick={() => onClick}
             >
               다음
             </Button>
