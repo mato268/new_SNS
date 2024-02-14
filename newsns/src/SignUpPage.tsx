@@ -8,40 +8,27 @@ import { MouseEvent, FormEvent, ChangeEvent } from "react";
 import { ReactComponent as ConfirmIcon } from "./icons/confirm.svg";
 
 const EMAIL_FORM = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const apiPath = process.env.REACT_APP_SEND_API_PATH || "";
+const VerificationCodesRequestApi = process.env.REACT_APP_SEND_API_PATH || "";
+const VerificationCodesSameApi =
+  process.env.REACT_APP_SAME_VERIFY_API_PATH || "";
 
 export default function SignUpPage() {
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
+  const [token, setToken] = useState("");
   const [nicknameErrorMessage, setNicknameErrorMessage] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
+  const [verifiCodeErrorMessage, setVerificodeErrorMessage] = useState("");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [showButtons, setShowButtons] = useState<boolean>(false);
   const [showInputs, setShowInputs] = useState<boolean>(false);
-  const [verificationCodes, setVerificationCodes] = useState<string[]>([
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-  ]);
+  const [verificationCodes, setVerificationCodes] = useState<string[]>(Array.from({ length: 6 }, () => ''));
+
+  const onClick = (e: MouseEvent<HTMLButtonElement, MouseEvent>) => {};
 
   const inputRefs = useRef<(HTMLInputElement | null)[]>(
     Array.from({ length: 6 }, () => null)
   );
-
-  const onInputChangeAndFocus = (e: ChangeEvent<HTMLInputElement>, index: number) => {
-    const { value } = e.target;
-  
-    if (value.length === 1 && index < inputRefs.current.length - 1) {
-      inputRefs.current[index + 1]?.focus();
-    }
-  
-    const verification = [...verificationCodes];
-    verification[index] = value;
-    setVerificationCodes(verification);
-  };
 
   const onVerificationCodesRequest = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -49,7 +36,7 @@ export default function SignUpPage() {
     setShowButtons(true);
 
     try {
-      const response = await fetch(apiPath, {
+      const response = await fetch(VerificationCodesRequestApi, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +55,28 @@ export default function SignUpPage() {
     }
   };
 
-  const onClick = (e: MouseEvent<HTMLButtonElement, MouseEvent>) => {};
+  const onVerificationCodesSame = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(VerificationCodesSameApi, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, token }),
+      });
+
+      if (!response.ok) {
+        console.log(response);
+        throw new Error("제출 실패");
+      }
+
+      console.log("성공");
+      console.log(token);
+    } catch (error) {
+      console.error("실패:", error);
+    }
+  };
 
   const validateEmail = (email: string): boolean => {
     return EMAIL_FORM.test(email);
@@ -96,11 +104,30 @@ export default function SignUpPage() {
     }
   };
 
+  const onVerifyChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
+    const value = e.target.value;
+    setToken(value);
+
+    if (value.length === 1 && index < inputRefs.current.length - 1) {
+      inputRefs.current[index + 1]?.focus();
+    }
+
+    const verification = [...verificationCodes];
+    verification[index] = value;
+    setVerificationCodes(verification);
+
+    if (!value) {
+      setVerificodeErrorMessage("/*잘못된 입력코드입니다*/");
+    } else {
+      setVerificodeErrorMessage("");
+    }
+  };
+
   return (
     <div className="bg-deepdark w-full gap-6 h-full flex justify-center flex-col">
       <div
-        className={`px-9 text-center -mt-6 ${
-          showButtons && showInputs ? "" : "-mt-52"
+        className={`px-9 text-center ${
+          showButtons && showInputs ? "-mt-6" : "-mt-52"
         }`}
       >
         <Typo
@@ -147,46 +174,40 @@ export default function SignUpPage() {
             variant="lgOutline"
           />
           <div className="pl-52 mt-4 flex">
-            <Button
-              type="submit"
-              sizes="Confirmed"
-              colors="yellow"
-            >
+            <Button type="submit" sizes="Confirmed" colors="yellow">
               인증코드발송
             </Button>
           </div>
         </form>
-        {showInputs && (
-          <div className="mt-4 flex justify-between">
-            {[...Array(6)].map((_, index) => (
-              <div key={index} className="px-1">
-                <Input
-                  type="text"
-                  sizes="small"
-                  colors="white"
-                  variant="smOutline"
-                  maxLength={1}
-                  value={verificationCodes[index]}
-                  onChange={e => onInputChangeAndFocus(e, index)}
-                  inputRef={(e: HTMLInputElement | null) =>
-                    (inputRefs.current[index] = e)
-                  }
-                />
-              </div>
-            ))}
-          </div>
-        )}
-        {showButtons && (
-          <div className="pl-56 pr-4 flex mt-20">
-            <Button
-              sizes="small"
-              colors="yellow"
-              onClick={() => onClick}
-            >
-              다음
-            </Button>
-          </div>
-        )}
+        <form onSubmit={onVerificationCodesSame}>
+          {showInputs && (
+            <div className="mt-4 flex justify-between">
+              {[...Array(6)].map((_, index) => (
+                <div key={index} className="px-1">
+                  <Input
+                    type="text"
+                    sizes="small"
+                    colors="white"
+                    variant="smOutline"
+                    maxLength={1}
+                    value={verificationCodes[index]}
+                    onChange={e => onVerifyChange(e, index)}
+                    inputRef={(e: HTMLInputElement | null) =>
+                      (inputRefs.current[index] = e)
+                    }
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+          {showButtons && (
+            <div className="pl-56 pr-4 flex mt-20">
+              <Button sizes="small" colors="yellow" onClick={() => onClick}>
+                다음
+              </Button>
+            </div>
+          )}
+        </form>
       </div>
       <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
         <div className="flex flex-col gap-3">
