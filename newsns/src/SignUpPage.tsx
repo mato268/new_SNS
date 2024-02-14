@@ -1,7 +1,6 @@
 import { Button } from "./components/Button";
 import { Input } from "./components/Input";
 import Typo from "./components/Typo";
-import Modal from "./components/Modal";
 import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { MouseEvent, FormEvent, ChangeEvent } from "react";
@@ -19,10 +18,11 @@ export default function SignUpPage() {
   const [nicknameErrorMessage, setNicknameErrorMessage] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [verifiCodeErrorMessage, setVerificodeErrorMessage] = useState("");
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [showButtons, setShowButtons] = useState<boolean>(false);
   const [showInputs, setShowInputs] = useState<boolean>(false);
-  const [verificationCodes, setVerificationCodes] = useState<string[]>(Array.from({ length: 6 }, () => ''));
+  const [verificationCodes, setVerificationCodes] = useState<string[]>(
+    Array.from({ length: 6 }, () => "")
+  );
 
   const onClick = (e: MouseEvent<HTMLButtonElement, MouseEvent>) => {};
 
@@ -86,7 +86,7 @@ export default function SignUpPage() {
     const value = e.target.value;
     setNickname(value);
 
-    if (value.length === 0 || value.length > 6) {
+    if (value.length > 0 && value.length < 6) {
       setNicknameErrorMessage("/*6글자까지 가능합니다*/");
     } else {
       setNicknameErrorMessage("");
@@ -202,47 +202,15 @@ export default function SignUpPage() {
           )}
           {showButtons && (
             <div className="pl-56 pr-4 flex mt-20">
-              <Button sizes="small" colors="yellow" onClick={() => onClick}>
-                다음
-              </Button>
+              <Link className="w-full" to={"/signUpPassword"}>
+                <Button sizes="small" colors="yellow" onClick={() => onClick}>
+                  다음
+                </Button>
+              </Link>
             </div>
           )}
         </form>
       </div>
-      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
-        <div className="flex flex-col gap-3">
-          <div className="text-center">
-            <Typo tag="h2" fonts="korea" sizes="xLarge" fontColor="green">
-              가입완료
-            </Typo>
-          </div>
-          <div className="text-center">
-            <Typo
-              tag="p"
-              fonts="theJamsil"
-              sizes="xLarge"
-              fontColor="deepdark"
-              weights="thin"
-            >
-              메인페이지로<br></br>이동하시겠습니까?
-            </Typo>
-          </div>
-          <div className="w-full gap-7 h-full flex justify-between">
-            <Link className="w-full" to={"/logIn"}>
-              <Button sizes="small" colors="deepdark">
-                아니오
-              </Button>
-            </Link>
-            <Button
-              sizes="small"
-              colors="deepdark"
-              onClick={() => setModalOpen(false)}
-            >
-              네
-            </Button>
-          </div>
-        </div>
-      </Modal>
     </div>
   );
 }
