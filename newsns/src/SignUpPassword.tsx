@@ -60,7 +60,7 @@ export default function SignUpPage() {
             {passwordErrorMessage}
           </Typo>
         )}
-        {password !== passwordConfirm && (
+        {password && passwordConfirm && password !== passwordConfirm && (
           <Typo tag="p" fonts="korea" sizes="small" fontColor="red">
             {passwordConfirmErrorMessage}
           </Typo>
@@ -85,12 +85,10 @@ export default function SignUpPage() {
             sizes="large"
             colors="white"
             rightNode={
-              (password.length > 0 && password === passwordConfirm && (
-                <ConfirmIcon />
-              )) ||
-              (password.length > 0 &&
-                passwordConfirm.length > 0 &&
-                password !== passwordConfirm && <ErrorIcon />)
+              (password && password === passwordConfirm && <ConfirmIcon />) ||
+              (password && passwordConfirm && password !== passwordConfirm && (
+                <ErrorIcon />
+              ))
             }
             placeholder="비밀번호를 재입력해주세요"
             value={passwordConfirm}
