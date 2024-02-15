@@ -202,7 +202,7 @@ export default function SignUpPage() {
           )}
           {showButtons && (
             <div className="pl-56 pr-4 flex mt-20">
-              <Link className="w-full" to={"/signUpPassword"}>
+              <Link className="w-full" to={"/signUp/password"}>
                 <Button sizes="small" colors="yellow" onClick={() => onClick}>
                   다음
                 </Button>
