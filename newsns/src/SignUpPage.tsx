@@ -7,9 +7,7 @@ import { MouseEvent, FormEvent, ChangeEvent } from "react";
 import { ReactComponent as ConfirmIcon } from "./icons/confirm.svg";
 
 const EMAIL_FORM = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const VerificationCodesRequestApi = process.env.REACT_APP_SEND_API_PATH || "";
-const VerificationCodesSameApi =
-  process.env.REACT_APP_SAME_VERIFY_API_PATH || "";
+const apiPath = process.env.REACT_APP_API_PATH || "";
 
 export default function SignUpPage() {
   const [nickname, setNickname] = useState("");
@@ -36,7 +34,7 @@ export default function SignUpPage() {
     setShowButtons(true);
 
     try {
-      const response = await fetch(VerificationCodesRequestApi, {
+      const response = await fetch(apiPath + "email/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -58,7 +56,7 @@ export default function SignUpPage() {
   const onVerificationCodesSame = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch(VerificationCodesSameApi, {
+      const response = await fetch(apiPath + "email/verify", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
