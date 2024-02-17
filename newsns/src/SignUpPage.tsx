@@ -109,6 +109,8 @@ export default function SignUpPage() {
 
     if (value.length === 1 && index < inputRefs.current.length - 1) {
       inputRefs.current[index + 1]?.focus();
+    } else if (value.length === 0 && index > 0) {
+      inputRefs.current[index - 1]?.focus();
     }
 
     const verification = [...verificationCodes];
@@ -201,13 +203,9 @@ export default function SignUpPage() {
           )}
           {showButtons && (
             <div className="pl-56 pr-4 flex mt-20">
-                <Button
-                  type="submit"
-                  sizes="small"
-                  colors="yellow"
-                >
-                  다음
-                </Button>
+              <Button type="submit" sizes="small" colors="yellow">
+                다음
+              </Button>
             </div>
           )}
         </form>
