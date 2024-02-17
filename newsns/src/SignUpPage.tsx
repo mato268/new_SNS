@@ -2,8 +2,8 @@ import { Button } from "./components/Button";
 import { Input } from "./components/Input";
 import Typo from "./components/Typo";
 import { useState, useRef } from "react";
-import { Link } from "react-router-dom";
-import { MouseEvent, FormEvent, ChangeEvent } from "react";
+import { useNavigate } from "react-router-dom";
+import { FormEvent, ChangeEvent } from "react";
 import { ReactComponent as ConfirmIcon } from "./icons/confirm.svg";
 
 const EMAIL_FORM = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -22,7 +22,7 @@ export default function SignUpPage() {
     Array.from({ length: 6 }, () => "")
   );
 
-  const onClick = (e: MouseEvent<HTMLButtonElement, MouseEvent>) => {};
+  const navigate = useNavigate();
 
   const inputRefs = useRef<(HTMLInputElement | null)[]>(
     Array.from({ length: 6 }, () => null)
@@ -71,6 +71,7 @@ export default function SignUpPage() {
 
       console.log("성공");
       console.log(token);
+      navigate("/signUp/password");
     } catch (error) {
       console.error("실패:", error);
     }
@@ -200,11 +201,13 @@ export default function SignUpPage() {
           )}
           {showButtons && (
             <div className="pl-56 pr-4 flex mt-20">
-              <Link className="w-full" to={"/signUp/password"}>
-                <Button sizes="small" colors="yellow" onClick={() => onClick}>
+                <Button
+                  type="submit"
+                  sizes="small"
+                  colors="yellow"
+                >
                   다음
                 </Button>
-              </Link>
             </div>
           )}
         </form>

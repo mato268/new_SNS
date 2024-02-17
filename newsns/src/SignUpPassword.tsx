@@ -68,7 +68,7 @@ export default function SignUpPage() {
       </div>
       <div className="flex px-7 -mt-6 justify-center flex-col">
         <Input
-          type="text"
+          type="password"
           sizes="large"
           colors="white"
           placeholder="비밀번호를 입력해주세요"
