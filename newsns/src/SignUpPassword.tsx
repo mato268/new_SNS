@@ -81,7 +81,7 @@ export default function SignUpPage() {
       <div className="flex mt-2 px-7 justify-center flex-col">
         <form>
           <Input
-            type="text"
+            type="password"
             sizes="large"
             colors="white"
             rightNode={

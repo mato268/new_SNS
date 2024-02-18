@@ -1,6 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { InputHTMLAttributes, ReactNode, Ref, forwardRef } from "react";
-import React from "react";
 
 interface InputProps
   extends InputHTMLAttributes<HTMLInputElement>,
@@ -12,8 +11,8 @@ interface InputProps
 const inputContainer = cva("px-4 flex items-center justify-between w-full ", {
   variants: {
     sizes: {
-      large: "text-large font-korea w-full h-lg",
-      small: "text-base font-korea w-full h-sm",
+      large: "text-large w-full h-lg",
+      small: "text-base w-full h-sm",
     },
     colors: {
       white: "bg-white outline-0 indent-5",
