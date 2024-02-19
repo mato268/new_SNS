@@ -64,13 +64,17 @@ export default function SignUpPage() {
         body: JSON.stringify({ email, token }),
       });
 
+      const responseBody = await response.json();
+
       if (!response.ok) {
         console.log(response);
         throw new Error("제출 실패");
       }
 
       console.log("성공");
+      console.log(email);
       console.log(token);
+      console.log(responseBody);
       navigate("/signUp/password");
     } catch (error) {
       console.error("실패:", error);
@@ -122,6 +126,9 @@ export default function SignUpPage() {
     } else {
       setVerificodeErrorMessage("");
     }
+
+    const combinedCode = verification.join("");
+    setToken(combinedCode);
   };
 
   return (
