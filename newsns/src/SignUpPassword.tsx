@@ -2,10 +2,12 @@ import { Button } from "./components/Button";
 import { Input } from "./components/Input";
 import Typo from "./components/Typo";
 import Modal from "./components/Modal";
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as ConfirmIcon } from "./icons/confirm.svg";
 import { ReactComponent as ErrorIcon } from "./icons/error.svg";
+
+const apiPath = process.env.REACT_APP_API_PATH || "";
 
 export default function SignUpPagePassword() {
   const [password, setPassword] = useState("");
@@ -15,6 +17,32 @@ export default function SignUpPagePassword() {
     useState("");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [showButtons, setShowButtons] = useState<boolean>(false);
+
+  const onSignUp = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(apiPath + "sign-up", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error("제출 실패");
+      }
+
+      console.log("성공");
+      console.log(data);
+      console.log(password);
+    } catch (error) {
+      console.error("실패:", error);
+    }
+  };
 
   const onPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -76,7 +104,7 @@ export default function SignUpPagePassword() {
         />
       </div>
       <div className="flex mt-2 px-7 justify-center flex-col">
-        <form>
+        <form onSubmit={onSignUp}>
           <Input
             type="password"
             sizes="large"

@@ -73,7 +73,7 @@ export default function SignUpPage() {
       }
 
       if (data.success) {
-        navigate("/signUp/password", { state: { nickname, email } });
+        navigate("/signUp/password");
       } else{
         navigate("/signUp");
         setVerificodeErrorMessage(`/*${data.message}*/`);
