@@ -64,18 +64,21 @@ export default function SignUpPage() {
         body: JSON.stringify({ email, token }),
       });
 
-      const responseBody = await response.json();
+      const data = await response.json();
+      console.log(data);
 
       if (!response.ok) {
         console.log(response);
         throw new Error("제출 실패");
       }
 
-      console.log("성공");
-      console.log(email);
-      console.log(token);
-      console.log(responseBody);
-      navigate("/signUp/password");
+      if (data.success) {
+        navigate("/signUp/password", { state: { nickname, email } });
+      } else{
+        navigate("/signUp");
+        setVerificodeErrorMessage(`/*${data.message}*/`);
+      }
+
     } catch (error) {
       console.error("실패:", error);
     }
@@ -89,7 +92,7 @@ export default function SignUpPage() {
     const value = e.target.value;
     setNickname(value);
 
-    if (value.length > 0 && value.length < 6) {
+    if (value.length === 1) {
       setNicknameErrorMessage("/*6글자까지 가능합니다*/");
     } else {
       setNicknameErrorMessage("");
@@ -120,12 +123,6 @@ export default function SignUpPage() {
     const verification = [...verificationCodes];
     verification[index] = value;
     setVerificationCodes(verification);
-
-    if (!value) {
-      setVerificodeErrorMessage("/*잘못된 입력코드입니다*/");
-    } else {
-      setVerificodeErrorMessage("");
-    }
 
     const combinedCode = verification.join("");
     setToken(combinedCode);
@@ -208,6 +205,11 @@ export default function SignUpPage() {
               ))}
             </div>
           )}
+          <div className="mt-2 flex justify-end">
+            <Typo tag="p" fonts="korea" sizes="small" fontColor="red">
+              {verifiCodeErrorMessage}
+            </Typo>
+          </div>
           {showButtons && (
             <div className="pl-56 pr-4 flex mt-20">
               <Button type="submit" sizes="small" colors="yellow">

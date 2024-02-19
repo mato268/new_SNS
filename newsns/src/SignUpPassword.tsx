@@ -7,24 +7,23 @@ import { Link } from "react-router-dom";
 import { ReactComponent as ConfirmIcon } from "./icons/confirm.svg";
 import { ReactComponent as ErrorIcon } from "./icons/error.svg";
 
-export default function SignUpPage() {
+export default function SignUpPagePassword() {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
   const [passwordConfirmErrorMessage, setPasswordConfirmErrorMessage] =
     useState("");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-
   const [showButtons, setShowButtons] = useState<boolean>(false);
 
   const onPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setPassword(value);
 
-    if (password.length === 6) {
-      setPasswordErrorMessage("");
-    } else {
+    if (value.length === 1) {
       setPasswordErrorMessage("/*6글자까지 가능합니다*/");
+    } else {
+      setPasswordErrorMessage("");
     }
   };
 
@@ -43,7 +42,7 @@ export default function SignUpPage() {
 
   return (
     <div className="bg-deepdark w-full gap-6 h-full flex justify-center flex-col">
-      <div className={`px-9 text-center ${showButtons ? "-mt-6" : "-mt-20"}`}>
+      <div className={`px-9 text-center ${showButtons ? "-mt-12" : "-mt-28"}`}>
         <Typo
           tag="h1"
           fonts="korea"
@@ -55,11 +54,9 @@ export default function SignUpPage() {
         </Typo>
       </div>
       <div className="px-12 min-h-sm flex justify-start">
-        {password.length === 0 && (
-          <Typo tag="p" fonts="korea" sizes="small" fontColor="green">
-            {passwordErrorMessage}
-          </Typo>
-        )}
+        <Typo tag="p" fonts="korea" sizes="small" fontColor="green">
+          {passwordErrorMessage}
+        </Typo>
         {password && passwordConfirm && password !== passwordConfirm && (
           <Typo tag="p" fonts="korea" sizes="small" fontColor="red">
             {passwordConfirmErrorMessage}
@@ -97,8 +94,8 @@ export default function SignUpPage() {
             maxLength={6}
           />
           <div
-            className={`pl-56 pr-4 flex mt-48 relative top-2 ${
-              showButtons ? "mb-2" : "-mb-1"
+            className={`pl-56 pr-4 flex mt-48 relative top-6 ${
+              showButtons ? "mb-5" : ""
             }`}
           >
             {showButtons && (
