@@ -3,6 +3,7 @@ import SignUpPage from "./SignUpPage";
 import Home from "./Home";
 import SignUpPassword from "./SignUpPassword";
 import { SignUpProvider } from "./hook/useSignUpContext";
+import { LogIn } from "./LogIn";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <main className="w-full flex max-w-md min-w-sm justify-center h-full">
           <Routes>
             <Route path="/" element={<Home />}></Route>
+            <Route path="logIn" element={<LogIn />}></Route>
             <Route>
               <Route path="/signUp" element={<SignUpPage />}></Route>
               <Route

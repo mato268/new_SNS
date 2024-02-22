@@ -39,7 +39,7 @@ export default function SignUpPagePassword() {
           password,
         }),
       });
-      
+
       const data = await response.json();
 
       if (!response.ok) {
@@ -171,7 +171,7 @@ export default function SignUpPagePassword() {
             </Typo>
           </div>
           <div className="w-full gap-7 h-full flex justify-between">
-            <Link className="w-full" to={"/logIn"}>
+            <Link className="w-full" to={"/"}>
               <Button sizes="small" colors="deepdark">
                 아니오
               </Button>
