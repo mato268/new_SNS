@@ -3,7 +3,7 @@ import { Button } from "./components/Button";
 import Typo from "./components/Typo";
 import { Link } from "react-router-dom";
 
-export default function LogIn() {
+export default function Home() {
   const onClick = (e: MouseEvent<HTMLButtonElement, MouseEvent>) => {}
 
   return (

@@ -5,6 +5,7 @@ import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormEvent, ChangeEvent } from "react";
 import { ReactComponent as ConfirmIcon } from "./icons/confirm.svg";
+import { useSignUpContext } from "./hook/useSignUpContext";
 
 const EMAIL_FORM = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const apiPath = process.env.REACT_APP_API_PATH || "";
@@ -21,6 +22,8 @@ export default function SignUpPage() {
   const [verificationCodes, setVerificationCodes] = useState<string[]>(
     Array.from({ length: 6 }, () => "")
   );
+
+  const { signUpValue, setSignUpValue } = useSignUpContext()
 
   const navigate = useNavigate();
 
@@ -65,7 +68,6 @@ export default function SignUpPage() {
       });
 
       const data = await response.json();
-      console.log(data);
 
       if (!response.ok) {
         console.log(response);
@@ -73,12 +75,13 @@ export default function SignUpPage() {
       }
 
       if (data.success) {
-        navigate("/signUp/password");
-      } else{
+        navigate(`/signUp/password`);
+        console.log(email)
+        console.log(nickname)
+      } else {
         navigate("/signUp");
         setVerificodeErrorMessage(`/*${data.message}*/`);
       }
-
     } catch (error) {
       console.error("실패:", error);
     }
@@ -91,6 +94,7 @@ export default function SignUpPage() {
   const onNicknameChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setNickname(value);
+    setSignUpValue(prev=> ({...prev, nickname : value}))
 
     if (value.length === 1) {
       setNicknameErrorMessage("/*6글자까지 가능합니다*/");
@@ -102,6 +106,7 @@ export default function SignUpPage() {
   const onEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setEmail(value);
+    setSignUpValue(prev=> ({...prev, email : value}))
 
     if (validateEmail(value) || value === "") {
       setEmailErrorMessage("");

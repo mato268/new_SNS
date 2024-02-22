@@ -6,6 +6,7 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as ConfirmIcon } from "./icons/confirm.svg";
 import { ReactComponent as ErrorIcon } from "./icons/error.svg";
+import { useSignUpContext } from "./hook/useSignUpContext";
 
 const apiPath = process.env.REACT_APP_API_PATH || "";
 
@@ -17,9 +18,14 @@ export default function SignUpPagePassword() {
     useState("");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [showButtons, setShowButtons] = useState<boolean>(false);
+  const { signUpValue } = useSignUpContext();
+
+  console.log(signUpValue.email);
+  console.log(signUpValue.nickname);
 
   const onSignUp = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log(signUpValue);
 
     try {
       const response = await fetch(apiPath + "sign-up", {
@@ -27,18 +33,26 @@ export default function SignUpPagePassword() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ password }),
+        body: JSON.stringify({
+          email: signUpValue.email,
+          nickname: signUpValue.nickname,
+          password,
+        }),
       });
-
+      
       const data = await response.json();
 
       if (!response.ok) {
         throw new Error("제출 실패");
       }
 
-      console.log("성공");
-      console.log(data);
-      console.log(password);
+      if (data.success) {
+        console.log("성공");
+        console.log(data);
+        console.log(password);
+      } else {
+        console.log(data);
+      }
     } catch (error) {
       console.error("실패:", error);
     }
