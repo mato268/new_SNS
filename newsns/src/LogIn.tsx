@@ -11,7 +11,6 @@ export const LogIn = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [loginError, setLoginError] = useState<boolean>(false);
 
   const onLogIn = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,12 +35,10 @@ export const LogIn = () => {
       } else {
         console.log(`${data.message}`);
         setModalOpen(true);
-        setLoginError(true);
       }
     } catch (error) {
       console.error("실패:", error);
       setModalOpen(true);
-      setLoginError(true);
     }
   };
 
@@ -85,42 +82,40 @@ export const LogIn = () => {
           </div>
         </div>
       </form>
-      {loginError && (
-        <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
-          <div className="flex flex-col gap-3">
-            <div className="text-center">
-              <Typo tag="h2" fonts="korea" sizes="xLarge" fontColor="red">
-                로그인 실패
-              </Typo>
-            </div>
-            <div className="text-center">
-              <Typo
-                tag="p"
-                fonts="theJamsil"
-                sizes="xLarge"
-                fontColor="deepdark"
-                weights="thin"
-              >
-                계정을 찾을 수 없습니다<br></br>새 계정을 만드시겠습니까?
-              </Typo>
-            </div>
-            <div className="w-full gap-7 h-full flex justify-between">
-              <Button
-                sizes="small"
-                colors="deepdark"
-                onClick={() => setModalOpen(false)}
-              >
-                취소
-              </Button>
-              <Link className="w-full" to={"/signUp"}>
-                <Button sizes="small" colors="deepdark">
-                  새 계정
-                </Button>
-              </Link>
-            </div>
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
+        <div className="flex flex-col gap-3">
+          <div className="text-center">
+            <Typo tag="h2" fonts="korea" sizes="xLarge" fontColor="red">
+              로그인 실패
+            </Typo>
           </div>
-        </Modal>
-      )}
+          <div className="text-center">
+            <Typo
+              tag="p"
+              fonts="theJamsil"
+              sizes="xLarge"
+              fontColor="deepdark"
+              weights="thin"
+            >
+              계정을 찾을 수 없습니다<br></br>새 계정을 만드시겠습니까?
+            </Typo>
+          </div>
+          <div className="w-full gap-7 h-full flex justify-between">
+            <Button
+              sizes="small"
+              colors="deepdark"
+              onClick={() => setModalOpen(false)}
+            >
+              취소
+            </Button>
+            <Link className="w-full" to={"/signUp"}>
+              <Button sizes="small" colors="deepdark">
+                새 계정
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };
