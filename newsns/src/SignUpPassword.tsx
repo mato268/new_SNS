@@ -20,12 +20,8 @@ export default function SignUpPagePassword() {
   const [showButtons, setShowButtons] = useState<boolean>(false);
   const { signUpValue } = useSignUpContext();
 
-  console.log(signUpValue.email);
-  console.log(signUpValue.nickname);
-
   const onSignUp = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(signUpValue);
 
     try {
       const response = await fetch(apiPath + "sign-up", {
@@ -48,13 +44,14 @@ export default function SignUpPagePassword() {
 
       if (data.success) {
         console.log("성공");
-        console.log(data);
-        console.log(password);
+        setModalOpen(true);
       } else {
-        console.log(data);
+        console.log("실패");
+        setModalOpen(false);
       }
     } catch (error) {
       console.error("실패:", error);
+      setModalOpen(false);
     }
   };
 

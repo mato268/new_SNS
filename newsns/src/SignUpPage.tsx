@@ -50,7 +50,6 @@ export default function SignUpPage() {
       }
 
       console.log("성공");
-      console.log(email);
     } catch (error) {
       console.error("실패:", error);
     }
@@ -76,8 +75,6 @@ export default function SignUpPage() {
 
       if (data.success) {
         navigate(`/signUp/password`);
-        console.log(email)
-        console.log(nickname)
       } else {
         navigate("/signUp");
         setVerificodeErrorMessage(`/*${data.message}*/`);
