@@ -37,6 +37,7 @@ export default function SignUpPagePassword() {
       });
 
       const data = await response.json();
+      console.log(data);
 
       if (!response.ok) {
         throw new Error("제출 실패");
@@ -51,7 +52,6 @@ export default function SignUpPagePassword() {
       }
     } catch (error) {
       console.error("실패:", error);
-      setModalOpen(false);
     }
   };
 
