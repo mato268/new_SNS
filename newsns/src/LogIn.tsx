@@ -53,33 +53,34 @@ export const LogIn = () => {
   };
 
   return (
-    <div className="bg-deepdark w-full h-full flex justify-center flex-col py-32 gap-9">
-      <form onSubmit={onLogIn}>
-        <div className="bg-yellow w-full h-full flex flex-col py-28 px-7 gap-4 rounded-full">
-          <Input
-            type="email"
-            sizes="large"
-            colors="white"
-            placeholder="이메일"
-            value={email}
-            onChange={onEmailChange}
-            variant="lgOutline"
-          />
-          <Input
-            type="password"
-            sizes="large"
-            colors="white"
-            placeholder="비밀번호"
-            value={password}
-            onChange={onPasswordChange}
-            variant="lgOutline"
-            maxLength={6}
-          />
-          <div className="w-full px-24">
-            <Button sizes="small" colors="deepdark">
-              로그인
-            </Button>
-          </div>
+    <div className="bg-deepdark w-full h-full flex justify-center py-32">
+      <form
+        onSubmit={onLogIn}
+        className="bg-yellow w-full h-full flex flex-col py-28 px-7 rounded-full gap-4"
+      >
+        <Input
+          type="email"
+          sizes="large"
+          colors="white"
+          placeholder="이메일"
+          value={email}
+          onChange={onEmailChange}
+          variant="lgOutline"
+        />
+        <Input
+          type="password"
+          sizes="large"
+          colors="white"
+          placeholder="비밀번호"
+          value={password}
+          onChange={onPasswordChange}
+          variant="lgOutline"
+          maxLength={6}
+        />
+        <div className="flex items-center px-24">
+          <Button sizes="small" colors="deepdark">
+            로그인
+          </Button>
         </div>
       </form>
       <Modal open={modalOpen} onClose={() => setModalOpen(false)}>

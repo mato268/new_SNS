@@ -114,41 +114,42 @@ export default function SignUpPagePassword() {
           maxLength={6}
         />
       </div>
-      <div className="flex mt-2 px-7 justify-center flex-col">
-        <form onSubmit={onSignUp}>
-          <Input
-            type="password"
-            sizes="large"
-            colors="white"
-            rightNode={
-              (password && password === passwordConfirm && <ConfirmIcon />) ||
-              (password && passwordConfirm && password !== passwordConfirm && (
-                <ErrorIcon />
-              ))
-            }
-            placeholder="비밀번호를 재입력해주세요"
-            value={passwordConfirm}
-            onChange={onPasswordConfirmChange}
-            variant="lgOutline"
-            maxLength={6}
-          />
-          <div
-            className={`pl-56 pr-4 flex mt-48 relative top-6 ${
-              showButtons ? "mb-5" : ""
-            }`}
-          >
-            {showButtons && (
-              <Button
-                sizes="small"
-                colors="yellow"
-                onClick={() => setModalOpen(true)}
-              >
-                다음
-              </Button>
-            )}
-          </div>
-        </form>
-      </div>
+      <form
+        onSubmit={onSignUp}
+        className="flex mt-2 px-7 justify-center flex-col"
+      >
+        <Input
+          type="password"
+          sizes="large"
+          colors="white"
+          rightNode={
+            (password && password === passwordConfirm && <ConfirmIcon />) ||
+            (password && passwordConfirm && password !== passwordConfirm && (
+              <ErrorIcon />
+            ))
+          }
+          placeholder="비밀번호를 재입력해주세요"
+          value={passwordConfirm}
+          onChange={onPasswordConfirmChange}
+          variant="lgOutline"
+          maxLength={6}
+        />
+        <div
+          className={`pl-56 pr-4 flex mt-48 relative top-6 ${
+            showButtons ? "mb-5" : ""
+          }`}
+        >
+          {showButtons && (
+            <Button
+              sizes="small"
+              colors="yellow"
+              onClick={() => setModalOpen(true)}
+            >
+              다음
+            </Button>
+          )}
+        </div>
+      </form>
       <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
         <div className="flex flex-col gap-3">
           <div className="text-center">
