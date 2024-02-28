@@ -1,5 +1,4 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import cn from "classnames";
 import { ButtonHTMLAttributes, ReactNode } from "react";
 
 interface ButtonProps
@@ -8,13 +7,13 @@ interface ButtonProps
   children: ReactNode;
 }
 
-const buttonForm = cva("", {
+const buttonForm = cva("hover:bg-gray", {
   variants: {
-    size: {
-      large: "text-lg w-buttonLarge h-buttonLarge rounded-2xl",
-      medium: "text-md w-buttonMedium h-buttonMedium rounded-2xl",
-      small: "text-sm w-buttonSmall h-buttonSmall rounded-2xl",
-      Confirmed: "text w-buttonConfirmed h-buttonConfirmed rounded-2xl",
+    sizes: {
+      large: "text-xLarge font-korea w-full h-lg rounded-2xl",
+      medium: "text-base font-korea w-full h-md rounded-2xl",
+      small: "text-small font-korea w-full h-sm rounded-2xl",
+      Confirmed: "text-small font-korea w-full h-sm rounded-2xl",
     },
     colors: {
       white: "bg-white text-deepdark",
@@ -24,9 +23,10 @@ const buttonForm = cva("", {
   },
 });
 
-export const Button = ({ children, size, colors, ...rest }: ButtonProps) => {
+export const Button = ({ children, sizes, colors, ...rest }: ButtonProps) => {
+  const buttonClass = buttonForm({ sizes, colors });
   return (
-    <button className={cn(buttonForm({ size, colors }))} {...rest}>
+    <button className={buttonClass} {...rest}>
       {children}
     </button>
   );

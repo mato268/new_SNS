@@ -2,6 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    screens: {
+      sm: { min: "0px", max: "381px" },
+      md: { min: "390px", max: "819px" },
+      lg: { min: "820px", max: "1079px" },
+    },
     colors: {
       transparent: "transparent",
       current: "currentColor",
@@ -13,59 +18,50 @@ module.exports = {
       green: "#00cd2d",
     },
     width: {
-      inputLarge: "332px",
-      inputMedium: "332px",
-      inputSamll: "226px",
-      buttonLarge: "332px",
-      buttonMedium: "139px",
-      buttonSmall: "98px",
-      buttonConfirmed: "140px",
+      sm: "98px",
+      md: "140px",
+      lg: "226px",
+      xl: "332px",
       auto: "w-auto",
-      full: "w-full",
+      full: "100%",
+      screen: "100vh",
       harf: "w-1/2",
       widthZero: "w-0",
     },
     height: {
-      inputLarge: "63px",
-      inputmedium: "48px",
-      input: "48px",
-      buttonLarge: "63px",
-      buttonMedium: "63px",
-      buttonSmall: "44.42px",
-      buttonConfirmed: "44px",
-      full: "h-full",
-      asdf: "1200px", //스크롤 방지 확인용
-    },
-    maxWidth: {
-      maxWidth: "390",
-      modalMaxWidth: "332px",
+      sm: "44px",
+      md: "48px",
+      lg: "63px",
+      full: "100%",
+      screen: "100vh",
     },
     maxHeight: {
-      maxHeight: "844",
-      modalMaxHeight: "293px",
+      sm: "293px",
+      md: "844px",
     },
     minWidth: {
-      modalMinWidth: "305px",
+      md: "305px",
     },
     minHeight: {
-      modalMinHeight: "251px",
+      sm: "25px",
+      md: "251px",
     },
     fontFamily: {
       korea: ["Korea"],
       theJamsil: ["TheJamsil"],
     },
     fontSize: {
-      xSmall: "0.75rem",
-      small: "0.875rem",
-      base: "1rem",
-      large: "1.125rem",
-      xLarge: "1.25rem",
+      xSmall: "0.75em",
+      small: "0.87em",
+      base: "1em",
+      large: "1.125em",
+      xLarge: "1.25em",
     },
     fontWeight: {
       thin: "100",
       normal: "400",
       bold: "700",
-      xBold: "900"
+      xBold: "900",
     },
     lineHeight: {
       default: "1rem",

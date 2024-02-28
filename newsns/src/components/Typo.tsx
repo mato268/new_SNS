@@ -30,6 +30,14 @@ const TypoForm = cva("", {
       normal: "leading-normal",
       loose: "leading-loose",
     },
+    fontColor: {
+      white: "text-white",
+      deepdark: "text-deepdark",
+      yellow: "text-yellow",
+      gray: "text-gray",
+      red: "text-red",
+      green: "text-green",
+    }
   },
 });
 
