@@ -4,6 +4,7 @@ import Home from "./Home";
 import SignUpPassword from "./SignUpPassword";
 import { SignUpProvider } from "./hook/useSignUpContext";
 import { LogIn } from "./LogIn";
+import { MainPage } from "./MainPage";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         <main className="w-full flex max-w-md min-w-sm justify-center h-full">
           <Routes>
             <Route path="/" element={<Home />}></Route>
-            <Route path="logIn" element={<LogIn />}></Route>
+            <Route path="/logIn" element={<LogIn />}></Route>
             <Route>
               <Route path="/signUp" element={<SignUpPage />}></Route>
               <Route
@@ -20,6 +21,7 @@ function App() {
                 element={<SignUpPassword />}
               ></Route>
             </Route>
+            <Route path="/mainPage" element={<MainPage />}></Route>
           </Routes>
         </main>
       </SignUpProvider>
