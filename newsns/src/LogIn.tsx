@@ -29,12 +29,17 @@ export const LogIn = () => {
 
       const data = await response.json();
 
+      const accessToken = data.accessToken;
+      localStorage.setItem('accessToken', accessToken);
+
       if (!response.ok) {
         throw new Error("제출 실패");
       }
 
       if (data.success) {
         console.log("성공");
+        console.log(data.accessToken);
+        console.log(data.refreshToken);
         navigate(`/mainPage`);
       } else {
         console.log(`${data.message}`);
