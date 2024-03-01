@@ -1,3 +1,5 @@
+import { getNewRefreshToken } from "./Refresh";
+
 const apiPath = process.env.REACT_APP_API_PATH || "";
 
 export const MyInfo = async () => {
@@ -26,9 +28,16 @@ export const MyInfo = async () => {
     } else {
       console.log(`${data.message}`);
     }
-    return data
-  } catch (error) {
+    return data;
+  } catch (error: any) {
     console.error("실패:", error);
+    if (error.response.status === 401) {
+      const { accessToken, refreshToken } = await getNewRefreshToken();
+      error.config.headers.Authorization = accessToken;
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
+      return (await fetch(error.config.url, error.config));
+    }
   }
 
   return MyInfo;
