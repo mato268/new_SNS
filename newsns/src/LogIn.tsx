@@ -34,7 +34,6 @@ export const LogIn = () => {
       const refreshToken = data.refreshToken;
       localStorage.setItem('refreshToken', refreshToken);
       
-
       if (!response.ok) {
         throw new Error("제출 실패");
       }

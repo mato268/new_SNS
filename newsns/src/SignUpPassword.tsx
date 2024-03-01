@@ -37,7 +37,11 @@ export default function SignUpPagePassword() {
       });
 
       const data = await response.json();
-      console.log(data);
+
+      const accessToken = data.accessToken;
+      localStorage.setItem('accessToken', accessToken);
+      const refreshToken = data.refreshToken;
+      localStorage.setItem('refreshToken', refreshToken);
 
       if (!response.ok) {
         throw new Error("제출 실패");
