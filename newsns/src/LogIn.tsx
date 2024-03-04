@@ -2,9 +2,52 @@ import { Button } from "./components/Button";
 import { Input } from "./components/Input";
 import Typo from "./components/Typo";
 import Modal from "./components/Modal";
-import { useState, ChangeEvent, FormEvent, useEffect } from "react";
+import {
+  useState,
+  ChangeEvent,
+  FormEvent,
+  Dispatch,
+  SetStateAction,
+  createContext,
+  useContext,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { ReactNode } from "react";
+
+interface TokenForm {
+  accessToken: string;
+  refreshToken: string;
+}
+
+interface TokenProviderProps {
+  children: ReactNode;
+}
+
+interface TokenContextType {
+  token: TokenForm;
+  setToken: Dispatch<SetStateAction<TokenForm>>;
+}
+
+const TokenContext = createContext<TokenContextType>({
+  token: { accessToken: "", refreshToken: "" },
+  setToken: () => {},
+});
+
+export const TokenProvider = ({ children }: TokenProviderProps) => {
+  const [token, setToken] = useState<TokenForm>({
+    accessToken: "",
+    refreshToken: "",
+  });
+
+  return (
+    <TokenContext.Provider value={{ token, setToken }}>
+      {children}
+    </TokenContext.Provider>
+  );
+};
+
+export const useToken = () => useContext(TokenContext);
 
 const apiPath = process.env.REACT_APP_API_PATH || "";
 
@@ -12,7 +55,8 @@ export const LogIn = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-  
+  const { token, setToken } = useToken();
+
   const navigate = useNavigate();
 
   const onLogIn = async (e: FormEvent<HTMLFormElement>) => {
@@ -29,22 +73,14 @@ export const LogIn = () => {
 
       const data = await response.json();
 
-      const accessToken = data.accessToken;
-      localStorage.setItem('accessToken', accessToken);
-      const refreshToken = data.refreshToken;
-      localStorage.setItem('refreshToken', refreshToken);
-      
       if (!response.ok) {
         throw new Error("제출 실패");
       }
 
       if (data.success) {
-        console.log("성공");
-        console.log(data.accessToken);
-        console.log(data.refreshToken);
+        setToken(data.accessToken);
         navigate(`/mainPage`);
       } else {
-        console.log(`${data.message}`);
         setModalOpen(true);
         navigate(`/logIn`);
       }

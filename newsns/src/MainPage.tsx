@@ -8,11 +8,19 @@ interface Info {
 }
 
 export const MainPage = () => {
-  const [info, setInfo] = useState<Info>();
+  const [info, setInfo] = useState<Info | undefined>(undefined);
+
   useEffect(() => {
-    MyInfo().then(res => {
-      setInfo(res);
-    });
+    const fetchInfo = async () => {
+      try {
+        const data = await MyInfo();
+        setInfo(data);
+      } catch (error) {
+        console.error("실패", error);
+      }
+    };
+
+    fetchInfo();
   }, []);
 
   return (
