@@ -13,14 +13,14 @@ function App() {
         <TokenProvider>
           <main className="w-full flex max-w-md min-w-sm justify-center h-full">
             <Routes>
-              <Route path="/" element={<Home />}></Route>
+              <Route path="/Home" element={<Home />}></Route>
               <Route path="/logIn" element={<LogIn />}></Route>
               <Route path="/signUp" element={<SignUpPage />}></Route>
               <Route
                 path="/signUp/password"
                 element={<SignUpPassword />}
               ></Route>
-              <Route path="/mainPage" element={<MainPage />}></Route>
+              <Route path="/" element={<MainPage />}></Route>
             </Routes>
           </main>
         </TokenProvider>
