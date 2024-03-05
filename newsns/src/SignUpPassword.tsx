@@ -38,8 +38,6 @@ export default function SignUpPagePassword() {
 
       const data = await response.json();
 
-      const accessToken = data.accessToken;
-      localStorage.setItem('accessToken', accessToken);
       const refreshToken = data.refreshToken;
       localStorage.setItem('refreshToken', refreshToken);
 

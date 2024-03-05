@@ -1,4 +1,4 @@
-import { getNewRefreshToken } from "./Refresh";
+import { Refresh } from "./Refresh";
 
 const apiPath = process.env.REACT_APP_API_PATH || "";
 
@@ -6,11 +6,10 @@ export const MyInfo = async () => {
   const accessToken = localStorage.getItem("accessToken");
 
   try {
-    const headers: HeadersInit = {};
-    if (accessToken) {
-      headers.Authorization = accessToken;
-    }
-
+    const headers: HeadersInit = {
+      Authorization: accessToken ? `Bearer ${accessToken}` : "",
+    };
+    
     const response = await fetch(apiPath + "my", {
       method: "GET",
       headers,
@@ -32,11 +31,11 @@ export const MyInfo = async () => {
   } catch (error: any) {
     console.error("실패:", error);
     if (error.response.status === 401) {
-      const { accessToken, refreshToken } = await getNewRefreshToken();
+      const { accessToken, refreshToken } = await Refresh();
       error.config.headers.Authorization = accessToken;
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
-      return (await fetch(error.config.url, error.config));
+      return await fetch(error.config.url, error.config);
     }
   }
 

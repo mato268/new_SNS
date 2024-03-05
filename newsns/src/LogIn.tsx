@@ -17,7 +17,6 @@ import { ReactNode } from "react";
 
 interface TokenForm {
   accessToken: string;
-  refreshToken: string;
 }
 
 interface TokenProviderProps {
@@ -30,14 +29,13 @@ interface TokenContextType {
 }
 
 const TokenContext = createContext<TokenContextType>({
-  token: { accessToken: "", refreshToken: "" },
+  token: { accessToken: ""},
   setToken: () => {},
 });
 
 export const TokenProvider = ({ children }: TokenProviderProps) => {
   const [token, setToken] = useState<TokenForm>({
     accessToken: "",
-    refreshToken: "",
   });
 
   return (
@@ -73,13 +71,16 @@ export const LogIn = () => {
 
       const data = await response.json();
 
+      const refreshToken = data.refreshToken;
+      localStorage.setItem('refreshToken', refreshToken);
+
       if (!response.ok) {
         throw new Error("제출 실패");
       }
 
       if (data.success) {
         setToken(data.accessToken);
-        navigate(`/mainPage`);
+        navigate(`/`);
       } else {
         setModalOpen(true);
         navigate(`/logIn`);
