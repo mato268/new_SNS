@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { MyInfo } from "./MyInfo";
+import { myInfo } from "./MyInfo";
+import { useToken } from "./hook/useTokenContext";
 
 interface Info {
   nickname: string;
@@ -9,11 +10,12 @@ interface Info {
 
 export const MainPage = () => {
   const [info, setInfo] = useState<Info | undefined>(undefined);
+  const { accessToken } = useToken();
 
   useEffect(() => {
     const fetchInfo = async () => {
       try {
-        const data = await MyInfo();
+        const data = await myInfo(accessToken);
         setInfo(data);
       } catch (error) {
         console.error("실패", error);
@@ -21,7 +23,7 @@ export const MainPage = () => {
     };
 
     fetchInfo();
-  }, []);
+  }, );
 
   return (
     <div className="bg-deepdark w-full gap-6 h-full flex justify-center flex-col">

@@ -2,13 +2,10 @@ import { Button } from "./components/Button";
 import { Input } from "./components/Input";
 import Typo from "./components/Typo";
 import Modal from "./components/Modal";
-import {
-  useState,
-  ChangeEvent,
-  FormEvent,
-} from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useToken } from "./hook/useTokenContext";
 
 const apiPath = process.env.REACT_APP_API_PATH || "";
 
@@ -16,6 +13,7 @@ export const LogIn = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const { setAccessToken } = useToken();
 
   const navigate = useNavigate();
 
@@ -34,14 +32,15 @@ export const LogIn = () => {
       const data = await response.json();
 
       const refreshToken = data.refreshToken;
-      localStorage.setItem('refreshToken', refreshToken);
+      localStorage.setItem("refreshToken", refreshToken);
 
       if (!response.ok) {
         throw new Error("제출 실패");
       }
 
       if (data.success) {
-        navigate(`/`);
+        navigate(`/Home`);
+        setAccessToken(data.accessToken)
       } else {
         setModalOpen(true);
         navigate(`/logIn`);

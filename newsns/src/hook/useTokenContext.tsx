@@ -1,40 +1,40 @@
 import {
-    ReactNode,
-    useState,
-    Dispatch,
-    SetStateAction,
-    createContext,
-    useContext,
-  } from "react";
+  ReactNode,
+  useState,
+  Dispatch,
+  SetStateAction,
+  createContext,
+  useContext,
+} from "react";
 
-interface TokenForm {
-    accessToken: string;
-  }
-  
-  interface TokenProviderProps {
-    children: ReactNode;
-  }
-  
-  interface TokenContextType {
-    token: TokenForm;
-    setToken: Dispatch<SetStateAction<TokenForm>>;
-  }
-  
-  const TokenContext = createContext<TokenContextType>({
-    token: { accessToken: ""},
-    setToken: () => {},
+export interface TokenForm {
+  accessToken: string;
+}
+
+interface TokenProviderProps {
+  children: ReactNode;
+}
+
+interface TokenContextType {
+  accessToken: TokenForm;
+  setAccessToken: Dispatch<SetStateAction<TokenForm>>;
+}
+
+const TokenContext = createContext<TokenContextType>({
+  accessToken: { accessToken: "" },
+  setAccessToken: () => {},
+});
+
+export const TokenProvider = ({ children }: TokenProviderProps) => {
+  const [accessToken, setAccessToken] = useState<TokenForm>({
+    accessToken: "",
   });
-  
-  export const TokenProvider = ({ children }: TokenProviderProps) => {
-    const [token, setToken] = useState<TokenForm>({
-      accessToken: "",
-    });
-  
-    return (
-      <TokenContext.Provider value={{ token, setToken }}>
-        {children}
-      </TokenContext.Provider>
-    );
-  };
-  
-  export const useToken = () => useContext(TokenContext);
+
+  return (
+    <TokenContext.Provider value={{ accessToken, setAccessToken }}>
+      {children}
+    </TokenContext.Provider>
+  );
+};
+
+export const useToken = () => useContext(TokenContext);
