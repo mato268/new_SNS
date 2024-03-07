@@ -3,8 +3,9 @@ import SignUpPage from "./SignUpPage";
 import Home from "./Home";
 import SignUpPassword from "./SignUpPassword";
 import { SignUpProvider } from "./hook/useSignUpContext";
-import { TokenProvider, LogIn } from "./LogIn";
+import { LogIn } from "./LogIn";
 import { MainPage } from "./MainPage";
+import { TokenProvider } from "./hook/useTokenContext";
 
 function App() {
   return (

@@ -6,46 +6,9 @@ import {
   useState,
   ChangeEvent,
   FormEvent,
-  Dispatch,
-  SetStateAction,
-  createContext,
-  useContext,
 } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { ReactNode } from "react";
-
-interface TokenForm {
-  accessToken: string;
-}
-
-interface TokenProviderProps {
-  children: ReactNode;
-}
-
-interface TokenContextType {
-  token: TokenForm;
-  setToken: Dispatch<SetStateAction<TokenForm>>;
-}
-
-const TokenContext = createContext<TokenContextType>({
-  token: { accessToken: ""},
-  setToken: () => {},
-});
-
-export const TokenProvider = ({ children }: TokenProviderProps) => {
-  const [token, setToken] = useState<TokenForm>({
-    accessToken: "",
-  });
-
-  return (
-    <TokenContext.Provider value={{ token, setToken }}>
-      {children}
-    </TokenContext.Provider>
-  );
-};
-
-export const useToken = () => useContext(TokenContext);
 
 const apiPath = process.env.REACT_APP_API_PATH || "";
 
@@ -53,7 +16,6 @@ export const LogIn = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const { token, setToken } = useToken();
 
   const navigate = useNavigate();
 
@@ -79,7 +41,6 @@ export const LogIn = () => {
       }
 
       if (data.success) {
-        setToken(data.accessToken);
         navigate(`/`);
       } else {
         setModalOpen(true);

@@ -5,11 +5,11 @@ const apiPath = process.env.REACT_APP_API_PATH || "";
 export const MyInfo = async () => {
   const accessToken = localStorage.getItem("accessToken");
 
+  const headers: HeadersInit = {
+    Authorization: accessToken ? `Bearer ${accessToken}` : "",
+  };
+
   try {
-    const headers: HeadersInit = {
-      Authorization: accessToken ? `Bearer ${accessToken}` : "",
-    };
-    
     const response = await fetch(apiPath + "my", {
       method: "GET",
       headers,
