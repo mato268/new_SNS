@@ -37,7 +37,9 @@ export default function SignUpPagePassword() {
       });
 
       const data = await response.json();
-      console.log(data);
+
+      const refreshToken = data.refreshToken;
+      localStorage.setItem('refreshToken', refreshToken);
 
       if (!response.ok) {
         throw new Error("제출 실패");
@@ -169,7 +171,7 @@ export default function SignUpPagePassword() {
             </Typo>
           </div>
           <div className="w-full gap-7 h-full flex justify-between">
-            <Link className="w-full" to={"/"}>
+            <Link className="w-full" to={"/logInMain"}>
               <Button sizes="small" colors="deepdark">
                 아니오
               </Button>
